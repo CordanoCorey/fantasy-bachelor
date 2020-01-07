@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fantasy-bachelor.API", "fantasy-bachelor.API\fantasy-bachelor.API.csproj", "{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F12818AB-33F1-4BF1-8D61-D2DD0D2E2039}"
+	ProjectSection(SolutionItems) = preProject
+		fantasy-bachelor.Entity\fantasy-bachelor.Entity.csproj = fantasy-bachelor.Entity\fantasy-bachelor.Entity.csproj
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fantasy-bachelor.Entity", "fantasy-bachelor.Entity\fantasy-bachelor.Entity.csproj", "{23508BAF-28D7-4F87-B4FA-F1431112BD29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|Any CPU.ActiveCfg = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|Any CPU.Build.0 = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|x64.ActiveCfg = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|x64.Build.0 = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|x86.ActiveCfg = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Debug|x86.Build.0 = dev|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|Any CPU.ActiveCfg = staging|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|Any CPU.Build.0 = staging|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|x64.ActiveCfg = staging|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|x64.Build.0 = staging|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|x86.ActiveCfg = staging|Any CPU
+		{59DF0CFA-A3EF-4272-8841-2DBC9D1775B6}.Release|x86.Build.0 = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|Any CPU.ActiveCfg = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|Any CPU.Build.0 = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|x64.ActiveCfg = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|x64.Build.0 = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|x86.ActiveCfg = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Debug|x86.Build.0 = dev|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|Any CPU.ActiveCfg = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|Any CPU.Build.0 = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|x64.ActiveCfg = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|x64.Build.0 = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|x86.ActiveCfg = staging|Any CPU
+		{23508BAF-28D7-4F87-B4FA-F1431112BD29}.Release|x86.Build.0 = staging|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BF0CD06-2F97-4E61-83C9-1AC5B95867CB}
+	EndGlobalSection
+EndGlobal

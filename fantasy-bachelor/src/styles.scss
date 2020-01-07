@@ -1,0 +1,45 @@
+@import 'theme';
+@import 'common';
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: block;
+  height: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.info-fab {
+  color: $primary-color;
+  font-size: 20px;
+}
+
+.error-message {
+  color: red;
+}
+
+.btn-close.mat-raised-button {
+  background-color: red;
+  color: #fff;
+}
+
+.btn-save.mat-raised-button {
+  background-color: green;
+  color: #fff;
+}
+
+mat-dialog-container {
+  height: 600px !important;
+  max-width: 100% !important;
+}

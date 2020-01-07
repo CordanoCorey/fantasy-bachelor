@@ -1,0 +1,31 @@
+<div id="contestant">
+  <div class="top">
+    <div class="left">
+      <h2>{{ contestant.name }}</h2>
+      <img [src]="contestant.src">
+      <div class="info">
+        <p><span class="attr">Age</span><span class="val">{{ contestant.age }}</span></p>
+        <p><span class="attr">Hometown</span><span class="val">{{ contestant.hometown }}</span></p>
+        <p><span class="attr">Profession</span><span class="val">{{ contestant.profession }}</span></p>
+      </div>
+    </div>
+    <div class="right">
+      <div class="bio">
+        <h3>Bio</h3>
+        <p>{{ contestant.bio }}</p>
+      </div>
+      <div class="fun-facts">
+        <h3>Fun Facts</h3>
+        <p *ngFor="let funFact of contestant.funFacts">{{ funFact }}</p>
+      </div>
+      <mat-form-field>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+          cdkAutosizeMaxRows="7" placeholder="My Notes" [(ngModel)]="notes"></textarea>
+      </mat-form-field>
+      <button *ngIf="notesChanged" mat-raised-button color="accent" class="btn-save" (click)="onSave()">SAVE</button>
+    </div>
+  </div>
+  <div class="bottom">
+    <button mat-raised-button class="btn-close" mat-dialog-close>CLOSE</button>
+  </div>
+</div>

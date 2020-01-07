@@ -1,0 +1,126 @@
+import { build, Token, routeParamSelector, routeParamIdSelector } from '@caiu/library';
+import { Store } from '@ngrx/store';
+import { Observable, interval, combineLatest } from 'rxjs';
+import { map, distinctUntilChanged, take } from 'rxjs/operators';
+
+import { CurrentUser, Contestants, Contestant, User, Users, Rankings, Ranking } from './models';
+
+export function activeUserSelector(store: Store<any>): Observable<User> {
+  return combineLatest(store.select('users'), routeParamIdSelector(store, 'userId'), (users, id) => users.get(id));
+}
+
+export function activeUserNameSelector(store: Store<any>): Observable<string> {
+  return activeUserSelector(store).pipe(
+    map(x => x.firstName),
+    distinctUntilChanged()
+  );
+}
+
+export function activeUserIdSelector(store: Store<any>): Observable<number> {
+  return activeUserSelector(store).pipe(
+    map(x => x.id),
+    distinctUntilChanged()
+  );
+}
+
+export function authenticatedSelector(store: Store<any>): Observable<boolean> {
+  return currentUserSelector(store).pipe(
+    map(user => user.authenticated),
+    take(1)
+  );
+}
+
+export function authTokenSelector(store: Store<any>): Observable<string> {
+  return currentUserSelector(store).pipe(
+    map(user => {
+      const token: Token = user && user.token ? build(Token, user.token) : new Token();
+      return token.toString();
+    })
+  );
+}
+
+export function contestantsSelector(store: Store<any>): Observable<Contestants> {
+  return store.select('contestants');
+}
+
+export function contestantsArraySelector(store: Store<any>): Observable<Contestant[]> {
+  return contestantsSelector(store).pipe(
+    map(x => x.asArray)
+  );
+}
+
+export function contestantSelector(store: Store<any>): Observable<Contestant> {
+  return combineLatest(contestantsSelector(store), routeParamIdSelector(store, 'contestantId'), currentUserRankingsSelector(store), (contestants, id, rankings) => {
+    const ranking = build(Ranking, rankings.find(x => x.contestantSeasonId === id));
+    return build(Contestant, contestants.get(id), {
+      userNotes: ranking.notes,
+      userRank: ranking.rank,
+      userRankingId: ranking.id
+    });
+  });
+}
+
+export function currentTimeSelector(store: Store<any>): Observable<Date> {
+  return interval(60000).pipe(
+    map(x => {
+      const d = new Date();
+      d.setTime(d.getTime() + 60 * 1000);
+      return d;
+    })
+  );
+}
+
+export function redirectToSelector(store: Store<any>): Observable<string> {
+  return routeParamSelector(store, 'redirectTo', 'dashboard').pipe(distinctUntilChanged());
+}
+
+export function currentUserSelector(store: Store<any>): Observable<CurrentUser> {
+  return store.select('currentUser').pipe(map(user => {
+    console.dir(user);
+    return build(CurrentUser, user);
+  }));
+}
+
+export function currentUserIdSelector(store: Store<any>): Observable<number> {
+  return currentUserSelector(store).pipe(
+    map(x => x.id),
+    distinctUntilChanged()
+  );
+}
+
+export function userNameSelector(store: Store<any>): Observable<string> {
+  return currentUserSelector(store).pipe(
+    map(x => x.fullName),
+    distinctUntilChanged()
+  );
+}
+
+export function activeDateSelector(store: Store<any>): Observable<Date> {
+  return routeParamSelector(store, 'date').pipe(map(x => (x ? new Date(x) : new Date())));
+}
+
+export function usersSelector(store: Store<any>): Observable<Users> {
+  return store.select('users');
+}
+
+export function rankingsSelector(store: Store<any>): Observable<Rankings> {
+  return store.select('rankings');
+}
+
+export function activeUserRankingsSelector(store: Store<any>): Observable<Ranking[]> {
+  return combineLatest(rankingsSelector(store), activeUserIdSelector(store), (rankings, userId) => {
+    return rankings.asArray.filter(x => x.userId === userId);
+  });
+}
+
+export function currentUserRankingsSelector(store: Store<any>): Observable<Ranking[]> {
+  return combineLatest(rankingsSelector(store), currentUserIdSelector(store), (rankings, userId) => {
+    return rankings.asArray.filter(x => x.userId === userId);
+  });
+}
+
+export function allRankingsSelector(store: Store<any>): Observable<Ranking[]> {
+  return rankingsSelector(store).pipe(
+    map(x => x.asArray)
+  );
+}

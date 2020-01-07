@@ -1,0 +1,35 @@
+<bachelor-container>
+  <div class="login">
+    <div class="card">
+      <img class="footer" src="../../assets/rose-petals.png">
+      <img class="header" src="../../assets/roses-header.png" />
+      <div class="title">
+        <h2>Final Roses</h2>
+        <h3>The Most Dramatic Fantasy Bachelor League Yet</h3>
+      </div>
+
+      <form [formGroup]="form" (keyup.enter)="onSubmit()">
+        <div class="group">
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="Email Address" type="email" formControlName="email" />
+            <mat-hint>You will be able to login to your account an hour prior to the start of the premiere on January 6,
+              2020
+              at 8pm using the email supplied to Evan or Corey.</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="group">
+          <mat-icon>lock</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="Password" type="password" formControlName="password" />
+          </mat-form-field>
+        </div> -->
+
+        <button type="button" class="button" (click)="onSubmit()">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</bachelor-container>

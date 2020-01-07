@@ -1,0 +1,8 @@
+<bachelor-container [hasWallpaper]="false">
+  <div id="contestants" class="scrollable">
+    <div class="card" *ngFor="let contestant of contestants$ | async" (click)="toContestant(contestant.id)">
+      <h2>{{ contestant.name }}</h2>
+      <img [src]="contestant.src">
+    </div>
+  </div>
+</bachelor-container>

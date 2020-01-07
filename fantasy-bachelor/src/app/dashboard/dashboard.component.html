@@ -1,0 +1,13 @@
+<bachelor-container>
+  <div id="dashboard">
+    <!-- <mat-toolbar></mat-toolbar> -->
+    <p class="welcome frosted" *ngIf="currentUser.firstName">Welcome, {{ currentUser.firstName }}!</p>
+    <!-- <button mat-raised-button class="btn-rank" color="primary" routerLink="/rank" disabled>RANK</button> -->
+    <button mat-raised-button class="btn-contestants" color="primary" routerLink="/contestants">VIEW
+      CONTESTANTS</button>
+    <div class="note frosted">
+      <p>After the first episode is over, you will be able to rank contestants.</p>
+      <p>Right now, click "View Contestants" to take notes to inform your rankings.</p>
+    </div>
+  </div>
+</bachelor-container>

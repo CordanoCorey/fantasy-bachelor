@@ -1,0 +1,18 @@
+<bachelor-container [hasWallpaper]="false">
+  <div id="ranking">
+    <div class="user-name">{{ userName$ | async }}</div>
+    <div class="total-points">58 total points</div>
+    <div class="contestant" *ngFor="let contestant of contestants; index as i;" cdkDrag>
+      <span class="rank">{{ i + 1 }}</span>
+      <div class="middle">
+        <img [src]="contestant.src">
+        <p class="info">
+          <span class="title">{{ contestant.name }}, {{ contestant.age }}</span>
+          <span class="subtitle">{{ contestant.profession }}, {{ contestant.hometown }}</span>
+        </p>
+      </div>
+      <div *ngIf="i % 2 === 0" class="status active">Active</div>
+      <div *ngIf="i % 2 === 1" class="status inactive">Eliminated</div>
+    </div>
+  </div>
+</bachelor-container>

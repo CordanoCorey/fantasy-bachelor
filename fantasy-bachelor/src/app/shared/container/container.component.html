@@ -1,0 +1,14 @@
+<div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
+  <mat-icon *ngIf="!hasWallpaper" class="home-icon" routerLink="/dashboard">home</mat-icon>
+  <img *ngIf="!hasWallpaper" class="roses-header" src="../../assets/roses-header.png" />
+  <!-- <iu-wallpaper *ngIf="showWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="false" [minCellWidth]="60"
+    [minCellHeight]="60">
+  </iu-wallpaper> -->
+  <iu-wallpaper *ngIf="showWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="false">
+  </iu-wallpaper>
+  <div id="content" class="scrollable" fxLayout="column" fxLayoutGap="16px" [style.height.px]="windowHeight"
+    [style.width.px]="windowWidth" [style.left.px]="0">
+    <ng-content></ng-content>
+  </div>
+  <img *ngIf="!hasWallpaper" class="roses-footer" src="../../assets/rose-petals.png">
+</div>
