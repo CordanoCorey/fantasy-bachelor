@@ -7,6 +7,7 @@ namespace fantasy_bachelor.Entity.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            Pre(migrationBuilder);
             migrationBuilder.EnsureSchema(
                 name: "Auth");
 

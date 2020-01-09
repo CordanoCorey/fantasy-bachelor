@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fantasy_bachelor.Entity.Context;
 
 namespace fantasy_bachelor.Entity.Migrations
 {
     [DbContext(typeof(FantasyBachelorContext))]
-    partial class FantasyBachelorContextModelSnapshot : ModelSnapshot
+    [Migration("20200107181050_add_users_3")]
+    partial class add_users_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -363,7 +365,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Email = "janmcmahan@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Jan",
-                            LastName = "McMahan",
+                            LastName = "",
                             LockoutEnabled = false,
                             NormalizedEmail = "janmcmahan@gmail.com",
                             NormalizedUserName = "janmcmahan@gmail.com",
@@ -507,7 +509,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Email = "lydiaphelan1@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Lydia",
-                            LastName = "Phelan",
+                            LastName = "",
                             LockoutEnabled = false,
                             NormalizedEmail = "lydiaphelan1@gmail.com",
                             NormalizedUserName = "lydiaphelan1@gmail.com",
@@ -596,7 +598,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
                             Email = "nkroof@yahoo.com",
                             EmailConfirmed = false,
-                            FirstName = "Gram",
+                            FirstName = "Nancy",
                             LastName = "Roof",
                             LockoutEnabled = false,
                             NormalizedEmail = "nkroof@yahoo.com",
@@ -702,72 +704,18 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 27,
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "bmorgan16@embarqmail.com",
+                            Email = "bmorgan@embarqmail.com",
                             EmailConfirmed = false,
                             FirstName = "Beth",
                             LastName = "Morgan",
                             LockoutEnabled = false,
-                            NormalizedEmail = "bmorgan16@embarqmail.com",
-                            NormalizedUserName = "bmorgan16@embarqmail.com",
+                            NormalizedEmail = "bmorgan@embarqmail.com",
+                            NormalizedUserName = "bmorgan@embarqmail.com",
                             PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                             TwoFactorEnabled = false,
-                            UserName = "bmorgan16@embarqmail.com"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "kmp18@pct.edu",
-                            EmailConfirmed = false,
-                            FirstName = "Kaitlin",
-                            LastName = "",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "kmp18@pct.edu",
-                            NormalizedUserName = "kmp18@pct.edu",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "kmp18@pct.edu"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "amanda.benfer@yahoo.com",
-                            EmailConfirmed = false,
-                            FirstName = "Amanda",
-                            LastName = "Benfer",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "amanda.benfer@yahoo.com",
-                            NormalizedUserName = "amanda.benfer@yahoo.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "amanda.benfer@yahoo.com"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "ipeleg@hotmail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Peleg",
-                            LastName = "",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ipeleg@hotmail.com",
-                            NormalizedUserName = "ipeleg@hotmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "ipeleg@hotmail.com"
+                            UserName = "bmorgan@embarqmail.com"
                         });
                 });
 

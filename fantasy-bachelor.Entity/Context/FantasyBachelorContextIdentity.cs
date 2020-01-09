@@ -77,16 +77,16 @@ namespace fantasy_bachelor.Entity.Context
                         Id = 4,
                         AccessFailedCount = 0,
                         ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                        Email = "es2531@gmail.com",
+                        Email = "es2531@ymail.com",
                         EmailConfirmed = false,
                         FirstName = "Evan",
                         LastName = "Simon",
                         LockoutEnabled = false,
-                        NormalizedEmail = "es2531@gmail.com",
-                        NormalizedUserName = "es2531@gmail.com",
+                        NormalizedEmail = "es2531@ymail.com",
+                        NormalizedUserName = "es2531@ymail.com",
                         PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                         SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                        UserName = "es2531@gmail.com"
+                        UserName = "es2531@ymail.com"
                     },
                     new ApplicationUser
                     {
@@ -109,16 +109,16 @@ namespace fantasy_bachelor.Entity.Context
                         Id = 6,
                         AccessFailedCount = 0,
                         ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                        Email = "adreamarikolk@yahoo.com",
+                        Email = "andreamariko1k@yahoo.com",
                         EmailConfirmed = false,
                         FirstName = "Andrea",
                         LastName = "",
                         LockoutEnabled = false,
-                        NormalizedEmail = "adreamarikolk@yahoo.com",
-                        NormalizedUserName = "adreamarikolk@yahoo.com",
+                        NormalizedEmail = "andreamariko1k@yahoo.com",
+                        NormalizedUserName = "andreamariko1k@yahoo.com",
                         PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                         SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                        UserName = "adreamarikolk@yahoo.com"
+                        UserName = "andreamariko1k@yahoo.com"
                     },
                     new ApplicationUser
                     {
@@ -144,7 +144,7 @@ namespace fantasy_bachelor.Entity.Context
                         Email = "janmcmahan@gmail.com",
                         EmailConfirmed = false,
                         FirstName = "Jan",
-                        LastName = "",
+                        LastName = "McMahan",
                         LockoutEnabled = false,
                         NormalizedEmail = "janmcmahan@gmail.com",
                         NormalizedUserName = "janmcmahan@gmail.com",
@@ -272,7 +272,7 @@ namespace fantasy_bachelor.Entity.Context
                         Email = "lydiaphelan1@gmail.com",
                         EmailConfirmed = false,
                         FirstName = "Lydia",
-                        LastName = "",
+                        LastName = "Phelan",
                         LockoutEnabled = false,
                         NormalizedEmail = "lydiaphelan1@gmail.com",
                         NormalizedUserName = "lydiaphelan1@gmail.com",
@@ -343,6 +343,166 @@ namespace fantasy_bachelor.Entity.Context
                         PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                         SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                         UserName = "t_bear25@icloud.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 21,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "nkroof@yahoo.com",
+                        EmailConfirmed = false,
+                        FirstName = "Gram",
+                        LastName = "Roof",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "nkroof@yahoo.com",
+                        NormalizedUserName = "nkroof@yahoo.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "nkroof@yahoo.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 22,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "felecia.williamson@gmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Felecia",
+                        LastName = "Williamson",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "felecia.williamson@gmail.com",
+                        NormalizedUserName = "felecia.williamson@gmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "felecia.williamson@gmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 23,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "mxr8@pct.edu",
+                        EmailConfirmed = false,
+                        FirstName = "Michayla",
+                        LastName = "Roberts",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "mxr8@pct.edu",
+                        NormalizedUserName = "mxr8@pct.edu",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "mxr8@pct.edu"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 24,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "cnkford18@yahoo.com",
+                        EmailConfirmed = false,
+                        FirstName = "Chad",
+                        LastName = "Kendrick",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "cnkford18@yahoo.com",
+                        NormalizedUserName = "cnkford18@yahoo.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "cnkford18@yahoo.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 25,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "taberangela@me.com",
+                        EmailConfirmed = false,
+                        FirstName = "Angela",
+                        LastName = "Taber",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "taberangela@me.com",
+                        NormalizedUserName = "taberangela@me.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "taberangela@me.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 26,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "cgcostalas@gmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Courtney",
+                        LastName = "Costalas",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "cgcostalas@gmail.com",
+                        NormalizedUserName = "cgcostalas@gmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "cgcostalas@gmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 27,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "bmorgan16@embarqmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Beth",
+                        LastName = "Morgan",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "bmorgan16@embarqmail.com",
+                        NormalizedUserName = "bmorgan16@embarqmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "bmorgan16@embarqmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 28,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "kmp18@pct.edu",
+                        EmailConfirmed = false,
+                        FirstName = "Kaitlin",
+                        LastName = "",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "kmp18@pct.edu",
+                        NormalizedUserName = "kmp18@pct.edu",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "kmp18@pct.edu"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 29,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "amanda.benfer@yahoo.com",
+                        EmailConfirmed = false,
+                        FirstName = "Amanda",
+                        LastName = "Benfer",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "amanda.benfer@yahoo.com",
+                        NormalizedUserName = "amanda.benfer@yahoo.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "amanda.benfer@yahoo.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 30,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "ipeleg@hotmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Peleg",
+                        LastName = "",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "ipeleg@hotmail.com",
+                        NormalizedUserName = "ipeleg@hotmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "ipeleg@hotmail.com"
                     }
                   );
             });
