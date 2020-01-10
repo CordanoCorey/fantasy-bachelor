@@ -533,6 +533,13 @@ namespace fantasy_bachelor.Entity.Context
                   .HasForeignKey(d => d.UserId)
                   .HasConstraintName("FK_Ranking_User");
 
+                //entity.HasData(
+                //    new Ranking
+                //    {
+
+                //    }
+                //);
+
             });
         }
     }

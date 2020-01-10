@@ -47,8 +47,7 @@ export class LoginComponent extends SmartComponent implements OnInit {
   onSubmit() {
     const email = this.form.value.email;
     if (email) {
-      const existing = this.users.asArray.find(x => x.email === email);
-      console.dir(existing);
+      const existing = this.users.asArray.find(x => x.email.toLowerCase() === email.toLowerCase());
       if (existing) {
         this.dispatch(CurrentUserActions.loginSuccess(existing));
       } else {

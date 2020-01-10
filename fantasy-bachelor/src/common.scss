@@ -7,26 +7,6 @@ $accent-palette: mat-palette($mat-indigo);
 $primary-color: mat-color($primary-palette, 500);
 $accent-color: mat-color($accent-palette, 300);
 
-.frosted {
-  background-color: rgba(255, 255, 255, .15);
-  backdrop-filter: blur(5px);
-}
-
-@mixin scrollable($color: #aebfbe, $background-color: white) {
-  .scrollable::-webkit-scrollbar-track {
-    background-color: $background-color;
-  }
-
-  .scrollable::-webkit-scrollbar {
-    width: 20px;
-    background-color: $background-color;
-  }
-
-  .scrollable::-webkit-scrollbar-thumb {
-    background-color: #c7d0cf;
-  }
-}
-
 @mixin black-gradient {
   background: #000000;
   /* Old browsers */
@@ -125,5 +105,29 @@ $accent-color: mat-color($accent-palette, 300);
       color: #fff;
       background-color: mat-color($primary);
     }
+  }
+}
+
+.frosted {
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
+}
+
+@mixin scrollable($color: #aebfbe, $background-color: white) {
+  .scrollable::-webkit-scrollbar-track {
+    background-color: $background-color;
+    border-radius: 40px;
+  }
+
+  .scrollable::-webkit-scrollbar {
+    width: 20px;
+    background-color: $background-color;
+    border-radius: 40px;
+  }
+
+  .scrollable::-webkit-scrollbar-thumb {
+    @include silver-gradient();
+    border-radius: 40px;
+    z-index: 11;
   }
 }

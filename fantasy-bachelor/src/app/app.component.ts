@@ -25,7 +25,7 @@ import {
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { CurrentUserActions, RankingsActions } from './shared/actions';
+import { CurrentUserActions, RankingsActions, UsersActions } from './shared/actions';
 import { CurrentUser } from './shared/models';
 import { currentUserIdSelector } from './shared/selectors';
 import { environment } from '../environments/environment';
@@ -135,11 +135,11 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.loadConfiguration();
     this.initStorage();
     this.initLookup();
-    setTimeout(() => {
-      if (!this.time) {
-        this.autoLogout();
-      }
-    }, 1800000);
+    // setTimeout(() => {
+    //   if (!this.time) {
+    //     this.autoLogout();
+    //   }
+    // }, 1800000);
     this.sync(['lastActive', 'loggedIn', 'routeName', 'userId', 'urlPath']);
     this.addSubscription(this.toastChanges);
     this.addSubscription(this.errorMessageChanges);
@@ -166,21 +166,23 @@ export class AppComponent extends SmartComponent implements OnInit {
 
   closeDialog(result: any) {
     if (this.contestantId) {
-      console.log(this.urlPath);
-      console.log(this.contestantId);
       this.dispatch(RouterActions.navigate(`/${this.urlPath}`));
     }
-    if (this.loggingOut) {
-      if (result) {
-        this.logout();
-      }
-      this.loggingOut = false;
-    }
+    // if (this.loggingOut) {
+    //   if (result) {
+    //     this.logout();
+    //   }
+    //   this.loggingOut = false;
+    // }
     super.closeDialog(result);
   }
 
   getRankings() {
     this.dispatch(HttpActions.get(`rankings`, RankingsActions.GET));
+  }
+
+  getUsers() {
+    this.dispatch(HttpActions.get(`users`, UsersActions.GET));
   }
 
   loadConfiguration() {
@@ -196,6 +198,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   }
 
   loadUserData() {
+    this.getUsers();
     this.getRankings();
   }
 
@@ -219,11 +222,10 @@ export class AppComponent extends SmartComponent implements OnInit {
 
   @HostListener('window:mousemove')
   resetTimer() {
-    // this.dispatch({ type: CurrentUserActions.RESET_LAST_ACTIVE });
-    clearTimeout(this.time);
-    this.time = setTimeout(() => {
-      this.autoLogout();
-    }, 1800000); // logout after 30 minutes
+    // clearTimeout(this.time);
+    // this.time = setTimeout(() => {
+    //   this.autoLogout();
+    // }, 1800000); // logout after 30 minutes
   }
 
   @HostListener('window:load', ['$event'])
@@ -235,6 +237,13 @@ export class AppComponent extends SmartComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(e: any) {
+    const windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    const windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    this.dispatch(WindowActions.resize(build(WindowResize, { windowHeight, windowWidth })));
+  }
+
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(e: any) {
     const windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     const windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
     this.dispatch(WindowActions.resize(build(WindowResize, { windowHeight, windowWidth })));

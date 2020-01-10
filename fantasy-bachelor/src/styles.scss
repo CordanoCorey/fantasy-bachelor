@@ -43,3 +43,10 @@ mat-dialog-container {
   height: 600px !important;
   max-width: 100% !important;
 }
+
+@media only screen and (max-device-width: 1366px) {
+  mat-dialog-container {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}

@@ -1,46 +1,42 @@
-<!-- <div class="scrollable blocks" multiple cdkDropList (cdkDropListDropped)="reorderList($event)" #scrollable>
-  <div mat-raised-button class="list-item" *ngFor="let contestant of contestants$ | async" cdkDrag
-    [cdkDragData]="contestant">
-    <mat-icon class="tree-item-handle" cdkDragHandle>drag_indicator</mat-icon>
-    <span class="type-name">{{ contestant.examTypeName }}</span>
-    <span class="cpt-code font-effect-3d-float">{{ contestant.examTypeModality }}</span>
-    <div class="custom-placeholder" *cdkDragPlaceholder></div>
-    <div class="list-item dragging" *cdkDragPreview>
-      <span class="cpt-code font-effect-3d-float">{{ contestant.examTypeModality }}</span>
-      <span class="type-name">{{ contestant.examTypeName }}</span>
-    </div>
-  </div>
-</div> -->
 <bachelor-container [hasWallpaper]="false">
   <div id="rank">
-    <div class="rankings scrollable" multiple cdkDropList (cdkDropListDropped)="reorderList($event)" #scrollable>
-      <div class="contestant" *ngFor="let contestant of contestants; index as i;" cdkDrag [cdkDragData]="contestant">
-        <mat-form-field appearance="fill">
-          <mat-label>Rank</mat-label>
-          <input matInput placeholder="#" type="number" [value]="i+1">
-        </mat-form-field>
-        <div class="middle" (click)="toContestant(contestant.id)">
-          <img [src]="contestant.src">
-          <p class="info">
-            <span class="title">{{ contestant.name }}, {{ contestant.age }}</span>
-            <span class="subtitle">{{ contestant.profession }}, {{ contestant.hometown }}</span>
-          </p>
-        </div>
-        <mat-icon class="drag-icon" cdkDragHandle>drag_indicator</mat-icon>
-        <div class="custom-placeholder" *cdkDragPlaceholder></div>
-      </div>
-    </div>
     <div class="rules">
       <h1>RULES</h1>
       <p>Order contestants based on the order they will leave the show, last to first with #1 being the
         recipient of the final rose.</p>
       <p>You will have until episode two on January 13 at 8PM to edit your rankings.</p>
-      <p>Until we come up with a way to supress spoilers, <span class="bold">WE ARE ON THE HONOR SYSTEM</span>. If you
-        aren't here for
-        the right
-        reasons, <span class="bold">GO HOME!</span>
-        <mat-icon>sentiment_satisfied_alt</mat-icon>
+      <p>After each show, if there are n contestants remaining, you will earn points for each contestant in the top n of
+        your rankings who
+        is one of those remaining. The number of points earned per contestant increases by one with each show, with a
+        correct prediction of the final rose earning an added bonus.</p>
+      <p>Regarding spoilers, we are on the honor system and are assuming<span class="bold">everyone is here for
+          the right
+          reasons!</span>
       </p>
+    </div>
+    <div class="rankings scrollable frosted" multiple cdkDropList (cdkDropListDropped)="reorderList($event)"
+      #scrollable>
+      <div class="contestant" *ngFor="let r of ordered$ | async; index as i;" cdkDrag [cdkDragData]="r">
+        <mat-icon class="drag-icon" cdkDragHandle>drag_indicator</mat-icon>
+        <img [src]="r.contestantSrc">
+        <mat-form-field appearance="fill">
+          <mat-label>Rank</mat-label>
+          <input matInput placeholder="#" type="number" [value]="r.order + 1" (change)="changeValue($event, r)">
+        </mat-form-field>
+        <div class="middle" (click)="toContestant(r.contestantSeasonId)">
+          <!-- <img [src]="r.contestantSrc"> -->
+          <p class="info">
+            <span class="title">{{ r.contestantName }}<span class="age">, {{ r.contestantAge }}</span></span>
+            <span class="subtitle">{{ r.contestantProfession }}, {{ r.contestantHometown }}</span>
+          </p>
+          <p *ngIf="r.notes && !r.contestantEliminated" class="notes scrollable">
+            "{{ r.notes }}"
+          </p>
+        </div>
+        <div class="custom-placeholder" *cdkDragPlaceholder></div>
+        <img *cdkDragPreview [src]="r.contestantSrc" [alt]="r.contestantName">
+        <div *ngIf="r.contestantEliminated" class="status inactive">Eliminated</div>
+      </div>
     </div>
   </div>
 </bachelor-container>

@@ -25,11 +25,22 @@ namespace fantasy_bachelor.API.Features.Rankings
 
         public IEnumerable<RankingModel> GetUserRankings(int userId)
         {
-            throw new NotImplementedException();
+            return FindBy(x => x.UserId == userId);
         }
 
         public void SaveUserRankings(IEnumerable<RankingModel> rankings)
         {
+            foreach (var ranking in rankings)
+            {
+                if (ranking.Id == 0)
+                {
+                    Insert(ranking);
+                }
+                else
+                {
+                    Update(ranking);
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Metadata, build, Validators, BaseEntity, Collection, CurrentUser as BaseCurrentUser, OrderedItem, Permutation, TypeConstructor } from '@caiu/library';
+import { Metadata, build, Validators, BaseEntity, Collection, CurrentUser as BaseCurrentUser, OrderedItem, Permutation, TypeConstructor, toArray } from '@caiu/library';
 
 export { BaseEntity } from '@caiu/library';
 
@@ -7,15 +7,31 @@ export class User {
   email = '';
   firstName = '';
   lastName = '';
+  order = 0;
+  paid = false;
+  pickToWin = 'N/A';
+  place = '';
+  totalPoints = 0;
 }
 
 export class Users extends Collection<User> {
+
+  static AssignPlaces(data: User[]): User[] {
+    const groupedByPointTotal = data.reduce((acc, x) => Object.assign({}, acc, { [x.totalPoints]: [...toArray(acc[x.totalPoints]), x] }), {});
+    return Object.keys(groupedByPointTotal).map((pts, i) => groupedByPointTotal[pts].map(y => build(User, y, {
+      order: i + 1,
+      place: groupedByPointTotal[pts].length > 1 ? `T${i + 1}` : `${i + 1}`
+    }))).reduce((acc, x) => [...acc, ...x], []);
+  }
+
+  usersLoaded = false;
+
   constructor() {
     super(User);
   }
 
   update(data: User | User[]): Users {
-    return build(Users, super.update(data));
+    return build(Users, super.update(data), { usersLoaded: true });
   }
 }
 
@@ -46,7 +62,7 @@ export class Login {
 export class Ordering<T> {
   private _history: Permutation<T>[] = [];
 
-  constructor(private _items: T[], public ctor: TypeConstructor<T>, public orderKey = 'order', public idKey = 'examTypeId') { }
+  constructor(private _items: T[], public ctor: TypeConstructor<T>, public orderKey = 'order', public idKey = 'contestantSeasonId') { }
 
   get count(): number {
     return this.items.length;
@@ -129,6 +145,8 @@ export class Ordering<T> {
   move(item: T, to: number): T[] {
     const from = this.getItemOrder(item);
     const itemId = this.getItemId(item);
+    console.dir(item);
+    console.log(from, itemId, to);
     if (to === from) {
       return [...this.items];
     } else if (to < from) {
@@ -178,6 +196,7 @@ export class Contestant {
   id = 0;
   age = 0;
   bio = '';
+  eliminated = false;
   funFacts: string[] = [];
   hometown = '';
   profession = '';
@@ -233,7 +252,8 @@ export class Contestants extends Collection<Contestant> {
           `Avonlea is a certified scuba diver and has traveled to almost all 50 states in an RV.`,
           `Every time Avonlea milks one of her cows, she thanks it for its hard work.`,
           `Avonlea enjoys playing the guitar and snuggling up by the fire to listen to a good audiobook.`
-        ]
+        ],
+        eliminated: true
       }),
       4: build(Contestant, {
         id: 4,
@@ -275,7 +295,8 @@ export class Contestants extends Collection<Contestant> {
           `Eunice's favorite holiday is Christmas because she loves Christmas music.`,
           `Eunice's favorite country to visit is Greece, and she can knock back ouzo like it's water.`,
           `Eunice's signature dance move is the ponytail helicopter.`
-        ]
+        ],
+        eliminated: true
       }),
       7: build(Contestant, {
         id: 7,
@@ -303,7 +324,8 @@ export class Contestants extends Collection<Contestant> {
           `Jade claims that she hosts the best game night in town.`,
           `Even though she is a flight attendant, Jade is VERY afraid of heights.`,
           `If Jade has to assign an aesthetic to her life, it would be "organized chaos."`
-        ]
+        ],
+        eliminated: true
       }),
       9: build(Contestant, {
         id: 9,
@@ -331,7 +353,8 @@ export class Contestants extends Collection<Contestant> {
           `Jenna is a passionate foodie who would do anything to eat pasta with Chrissy Teigen one day.`,
           `Jenna has a pet goldfish named George, and she says that George gives great advice.`,
           `When Jenna is not bowling strikes at the local alley, she's at home knitting.`
-        ]
+        ],
+        eliminated: true
       }),
       11: build(Contestant, {
         id: 11,
@@ -345,7 +368,8 @@ export class Contestants extends Collection<Contestant> {
           `Last Halloween, Katrina dressed up as her hairless cat, Jasmine, and Jasmine dressed up as her.`,
           `On the weekends, Katrina loves to stay up late and eat junk food.`,
           `Katrina's biggest pet peeve is not being in control.`
-        ]
+        ],
+        eliminated: true
       }),
       12: build(Contestant, {
         id: 12,
@@ -401,7 +425,8 @@ export class Contestants extends Collection<Contestant> {
           `Flakey and pessimistic people make Kylie mad.`,
           `Kylie's dream vacation would be to go on safari in Africa.`,
           `Kylie grew up playing softball and is a batting cage queen.`
-        ]
+        ],
+        eliminated: true
       }),
       16: build(Contestant, {
         id: 16,
@@ -457,7 +482,8 @@ export class Contestants extends Collection<Contestant> {
           `Maurissa recently left the United States for the first time and went on a girl's trip to the Caribbean.`,
           `When Maurissa is feeling confident, she breaks into song.`,
           `Maurissa prefers to surround herself with people who have a more mature outlook on life. All of her best friends are at least 10 years older than her.`
-        ]
+        ],
+        eliminated: true
       }),
       20: build(Contestant, {
         id: 20,
@@ -471,7 +497,8 @@ export class Contestants extends Collection<Contestant> {
           `Megan's mother is her best friend. They talk every day.`,
           `Megan is a facemask enthusiast.`,
           `One day, Megan hopes to travel to Zion National Park.`
-        ]
+        ],
+        eliminated: true
       }),
       21: build(Contestant, {
         id: 21,
@@ -625,10 +652,31 @@ export class Contestants extends Collection<Contestant> {
 
 export class Ranking {
   id = 0;
+  contestantAge = 0;
+  contestantEliminated = false;
+  contestantHometown = '';
+  contestantName = '';
+  contestantProfession = '';
   contestantSeasonId = 0;
+  contestantSrc = '';
   notes = '';
+  order = 0;
   rank = 0;
   userId = 0;
+
+  get metadata(): Metadata {
+    return build(Metadata, {
+      ignore: ['id', 'contestantAge', 'contestantHometown', 'contestantName', 'contestantProfession', 'contestantSrc', 'order']
+    });
+  }
+
+  // set order(value: number) {
+  //   this.rank = value;
+  // }
+
+  // get order(): number {
+  //   return this.rank;
+  // }
 }
 
 export class Rankings extends Collection<Ranking> {

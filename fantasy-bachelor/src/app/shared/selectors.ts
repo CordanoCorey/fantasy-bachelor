@@ -1,4 +1,4 @@
-import { build, Token, routeParamSelector, routeParamIdSelector } from '@caiu/library';
+import { build, Token, routeParamSelector, routeParamIdSelector, compareStrings, compareNumbers } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, interval, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged, take } from 'rxjs/operators';
@@ -76,7 +76,6 @@ export function redirectToSelector(store: Store<any>): Observable<string> {
 
 export function currentUserSelector(store: Store<any>): Observable<CurrentUser> {
   return store.select('currentUser').pipe(map(user => {
-    console.dir(user);
     return build(CurrentUser, user);
   }));
 }
@@ -119,8 +118,36 @@ export function currentUserRankingsSelector(store: Store<any>): Observable<Ranki
   });
 }
 
+export function currentUserContestantRankingsSelector(store: Store<any>): Observable<Ranking[]> {
+  return combineLatest(currentUserRankingsSelector(store), contestantsArraySelector(store), (rankings, contestants) => {
+    return contestants.map(x => build(Ranking, rankings.find(y => y.contestantSeasonId === x.id), {
+      contestantAge: x.age,
+      contestantHometown: x.hometown,
+      contestantName: x.name,
+      contestantProfession: x.profession,
+      contestantSeasonId: x.id,
+      contestantSrc: x.src,
+      contestantEliminated: x.eliminated
+    })).sort((a, b) => compareNumbers((a.contestantEliminated ? 100 : 0) + a.rank, (b.contestantEliminated ? 100 : 0) + b.rank)).map((x, i) => build(Ranking, x, { order: i }));
+  });
+}
+
 export function allRankingsSelector(store: Store<any>): Observable<Ranking[]> {
   return rankingsSelector(store).pipe(
     map(x => x.asArray)
+  );
+}
+
+export function allUsersSelector(store: Store<any>): Observable<User[]> {
+  return usersSelector(store).pipe(
+    map(x => Users.AssignPlaces(x.asArray.filter(y => y.id !== 1).sort((a, b) => compareStrings(a.firstName, b.firstName))))
+    // map(x => x.asArray.filter(y => y.id !== 1))
+  );
+}
+
+export function usersLoadedSelector(store: Store<any>): Observable<boolean> {
+  return usersSelector(store).pipe(
+    map(x => x.usersLoaded),
+    distinctUntilChanged()
   );
 }
