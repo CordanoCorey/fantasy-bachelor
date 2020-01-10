@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { SmartComponent, ViewSettingsActions, sidenavOpenedSelector, windowHeightSelector, windowWidthSelector, SidenavActions, build, Image } from '@caiu/library';
+import { SmartComponent, ViewSettingsActions, sidenavOpenedSelector, windowHeightSelector, windowWidthSelector, SidenavActions, build, Image, routeNameSelector, CurrentUserActions } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Contestant } from '../models';
@@ -66,6 +66,8 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
   contestants: Contestant[] = [];
   contestants$: Observable<Contestant[]>;
   isDarkTheme = true;
+  routeName = '';
+  routeName$: Observable<string>;
   sidenavOpened = true;
   sidenavOpened$: Observable<boolean>;
   windowHeight = 0;
@@ -75,6 +77,7 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
 
   constructor(public store: Store<any>, private elementRef: ElementRef) {
     super(store);
+    this.routeName$ = routeNameSelector(store);
     this.sidenavOpened$ = sidenavOpenedSelector(store);
     this.windowHeight$ = windowHeightSelector(store);
     this.windowWidth$ = windowWidthSelector(store);
@@ -96,7 +99,18 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
       src: x.src,
       height: 330,
       width: 330
-    }))];
+    })),
+    // build(Image, {
+    //   src: 'assets/roses.png',
+    //   height: 463,
+    //   width: 790
+    // }),
+    build(Image, {
+      src: 'assets/rose.png',
+      height: 4000,
+      width: 3195
+    })
+    ];
   }
 
   get isMobile(): boolean {
@@ -120,7 +134,7 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
   }
 
   ngOnInit() {
-    this.sync(['contestants', 'sidenavOpened', 'windowHeight', 'windowWidth']);
+    this.sync(['contestants', 'routeName', 'sidenavOpened', 'windowHeight', 'windowWidth']);
   }
 
   ngAfterViewInit() {
@@ -141,6 +155,10 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
 
   closeSidenav() {
     this.dispatch(SidenavActions.close());
+  }
+
+  logout() {
+    this.dispatch(CurrentUserActions.logout());
   }
 
   openSidenav() {

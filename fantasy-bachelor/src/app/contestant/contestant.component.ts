@@ -28,7 +28,6 @@ export class ContestantComponent extends SmartComponent implements OnInit {
   }
 
   set contestant(value: Contestant) {
-    console.dir(value);
     this._contestant = value;
     this.notes = value.userNotes;
   }
@@ -38,7 +37,6 @@ export class ContestantComponent extends SmartComponent implements OnInit {
   }
 
   set notes(value: string) {
-    console.log(value);
     this._notes = value;
   }
 
@@ -65,7 +63,6 @@ export class ContestantComponent extends SmartComponent implements OnInit {
   }
 
   onSave() {
-    console.dir(this.valueOut);
     if (this.contestant.userRankingId) {
       this.updateRanking(this.valueOut);
     } else {

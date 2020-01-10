@@ -89,3 +89,4 @@ C:\appdev\fantasy-bachelor\fantasy-bachelor.API\obj\Debug\netcoreapp3.0\fantasy-
 C:\appdev\fantasy-bachelor\fantasy-bachelor.API\obj\Debug\netcoreapp3.0\fantasy-bachelor.API.csproj.CopyComplete
 C:\appdev\fantasy-bachelor\fantasy-bachelor.API\obj\Debug\netcoreapp3.0\fantasy-bachelor.API.dll
 C:\appdev\fantasy-bachelor\fantasy-bachelor.API\obj\Debug\netcoreapp3.0\fantasy-bachelor.API.pdb
+C:\appdev\fantasy-bachelor\fantasy-bachelor.API\bin\Debug\netcoreapp3.0\Microsoft.OpenApi.dll

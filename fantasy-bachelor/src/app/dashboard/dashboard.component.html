@@ -2,12 +2,14 @@
   <div id="dashboard">
     <!-- <mat-toolbar></mat-toolbar> -->
     <p class="welcome frosted" *ngIf="currentUser.firstName">Welcome, {{ currentUser.firstName }}!</p>
-    <!-- <button mat-raised-button class="btn-rank" color="primary" routerLink="/rank" disabled>RANK</button> -->
-    <button mat-raised-button class="btn-contestants" color="primary" routerLink="/contestants">VIEW
+    <button mat-raised-button class="btn-rank" color="primary" routerLink="/rank">RANK</button>
+    <button mat-raised-button class="btn-contestants" color="accent" routerLink="/contestants">VIEW
       CONTESTANTS</button>
-    <div class="note frosted">
-      <p>After the first episode is over, you will be able to rank contestants.</p>
-      <p>Right now, click "View Contestants" to take notes to inform your rankings.</p>
-    </div>
+    <!-- <div class="note frosted">
+      <p>Soon (ASAP but by Friday for sure) you will be able to start ranking contestants.</p>
+      <p>Right now, click "View Contestants" then click on a contestant to take notes.</p>
+      <p>You are the only one who will see these notes and they can help you later with your rankings.</p>
+    </div> -->
+    <!-- <bachelor-users></bachelor-users> -->
   </div>
 </bachelor-container>

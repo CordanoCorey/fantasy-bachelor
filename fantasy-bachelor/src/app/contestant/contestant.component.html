@@ -18,7 +18,8 @@
         <h3>Fun Facts</h3>
         <p *ngFor="let funFact of contestant.funFacts">{{ funFact }}</p>
       </div>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>My Notes</mat-label>
         <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
           cdkAutosizeMaxRows="7" placeholder="My Notes" [(ngModel)]="notes"></textarea>
       </mat-form-field>

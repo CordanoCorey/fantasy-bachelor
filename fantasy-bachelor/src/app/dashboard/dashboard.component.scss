@@ -9,11 +9,17 @@
   align-items: center;
   justify-content: space-around;
   position: relative;
+  z-index: 9;
+  font-family: 'Josefin Sans', sans-serif;
 
   mat-toolbar {
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  bachelor-users {
+    width: 50%;
   }
 
   .btn-rank {
@@ -23,8 +29,9 @@
   }
 
   .note {
-    font-size: 24px;
+    font-size: 22px;
     padding: 20px 40px;
+    text-align: center;
   }
 
   .btn-contestants {
@@ -38,5 +45,37 @@
     font-size: 56px;
     margin-bottom: 60px;
     padding: 20px 40px;
+  }
+}
+
+@media only screen and (max-device-width: 1366px) {
+  #dashboard {
+    justify-content: flex-start;
+
+    .btn-rank {
+      color: #fff;
+      font-size: 24px;
+      padding: 40px 5%;
+      width: 90%;
+    }
+
+    .note {
+      font-size: 16px;
+      padding: 20px 5%;
+      width: 90%;
+    }
+
+    .btn-contestants {
+      color: #fff;
+      font-size: 24px;
+      padding: 40px 5%;
+      width: 90%;
+      margin: 20px 0;
+    }
+
+    .welcome {
+      font-size: 20px;
+      margin-top: 60px;
+    }
   }
 }

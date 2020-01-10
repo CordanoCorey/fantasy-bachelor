@@ -1,0 +1,14 @@
+<div class="users" @expandable>
+  <div class="row header">
+    <div class="col place">Place</div>
+    <div class="col name">Player</div>
+    <div class="col winner">Pick To Win</div>
+    <div class="col points">Total Points</div>
+  </div>
+  <div class="row" *ngFor="let user of users$ | async; index as i" [routerLink]="'/rankings/' + user.id">
+    <div class="col place">{{ user.place }}</div>
+    <div class="col name">{{ user.firstName }}</div>
+    <div class="col winner">{{ user.pickToWin }}</div>
+    <div class="col points">{{ user.totalPoints }}</div>
+  </div>
+</div>
