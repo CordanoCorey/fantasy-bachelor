@@ -114,15 +114,19 @@ export function activeUserRankingsSelector(store: Store<any>): Observable<Rankin
 
 export function activeUserContestantRankingsSelector(store: Store<any>): Observable<Ranking[]> {
   return combineLatest(activeUserRankingsSelector(store), contestantsArraySelector(store), (rankings, contestants) => {
-    return contestants.map(x => build(Ranking, rankings.find(y => y.contestantSeasonId === x.id), {
-      contestantAge: x.age,
-      contestantHometown: x.hometown,
-      contestantName: x.name,
-      contestantProfession: x.profession,
-      contestantSeasonId: x.id,
-      contestantSrc: x.src,
-      contestantEliminated: x.eliminated
-    })).sort((a, b) => compareNumbers((a.contestantEliminated ? 100 : 0) + a.rank, (b.contestantEliminated ? 100 : 0) + b.rank)).map((x, i) => build(Ranking, x, { order: i }));
+    return contestants.map(x => {
+      const r = build(Ranking, rankings.find(y => y.contestantSeasonId === x.id));
+      return build(Ranking, r, {
+        contestantAge: x.age,
+        contestantHometown: x.hometown,
+        contestantName: x.name,
+        contestantProfession: x.profession,
+        contestantSeasonId: x.id,
+        contestantSrc: x.src,
+        contestantEliminated: x.eliminated,
+        points: Rankings.CalculatePoints(x.finish, r.rank + 1)
+      });
+    }).sort((a, b) => compareNumbers(a.rank, b.rank)).map((x, i) => build(Ranking, x, { order: i }));
   });
 }
 
@@ -142,7 +146,7 @@ export function currentUserContestantRankingsSelector(store: Store<any>): Observ
       contestantSeasonId: x.id,
       contestantSrc: x.src,
       contestantEliminated: x.eliminated
-    })).sort((a, b) => compareNumbers((a.contestantEliminated ? 100 : 0) + a.rank, (b.contestantEliminated ? 100 : 0) + b.rank)).map((x, i) => build(Ranking, x, { order: i }));
+    })).sort((a, b) => compareNumbers(a.rank, b.rank)).map((x, i) => build(Ranking, x, { order: i }));
   });
 }
 
@@ -154,8 +158,9 @@ export function allRankingsSelector(store: Store<any>): Observable<Ranking[]> {
 
 export function allUsersSelector(store: Store<any>): Observable<User[]> {
   return usersSelector(store).pipe(
-    map(x => Users.AssignPlaces(x.asArray.filter(y => y.id !== 1).sort((a, b) => compareStrings(a.firstName, b.firstName))))
-    // map(x => x.asArray.filter(y => y.id !== 1))
+    map(x => Users.AssignPlaces(x.asArray.filter(y => y.id !== 1 && y.totalPoints > 0 && y.firstName !== 'Addie')
+      .sort((a, b) => compareNumbers(a.totalPoints, b.totalPoints)))
+    )
   );
 }
 
@@ -163,5 +168,18 @@ export function usersLoadedSelector(store: Store<any>): Observable<boolean> {
   return usersSelector(store).pipe(
     map(x => x.usersLoaded),
     distinctUntilChanged()
+  );
+}
+
+export function contestantsRemainingSelector(store: Store<any>): Observable<number> {
+  return contestantsArraySelector(store).pipe(
+    map(x => x.filter(y => !y.eliminated).length),
+    distinctUntilChanged()
+  );
+}
+
+export function activeUserTotalPointsSelector(store: Store<any>): Observable<number> {
+  return activeUserContestantRankingsSelector(store).pipe(
+    map(x => x.reduce((acc, y) => acc + y.points, 0))
   );
 }

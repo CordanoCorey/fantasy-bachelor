@@ -11,6 +11,7 @@ namespace fantasy_bachelor.API.Features.Rankings
         RankingModel GetRanking(int id);
         RankingModel AddRanking(RankingModel model);
         RankingModel UpdateRanking(RankingModel model);
+        IEnumerable<RankingModel> GetUserRankings(int userId);
         IEnumerable<RankingModel> UpdateUserRankings(int userId, IEnumerable<RankingModel> rankings);
     }
 
@@ -38,6 +39,11 @@ namespace fantasy_bachelor.API.Features.Rankings
             return _repo.All();
         }
 
+        public IEnumerable<RankingModel> GetUserRankings(int userId)
+        {
+            return _repo.FindByUser(userId);
+        }
+
         public RankingModel UpdateRanking(RankingModel model)
         {
             var updated = _repo.Update(model);
@@ -47,7 +53,7 @@ namespace fantasy_bachelor.API.Features.Rankings
         public IEnumerable<RankingModel> UpdateUserRankings(int userId, IEnumerable<RankingModel> rankings)
         {
             _repo.SaveUserRankings(rankings);
-            return _repo.GetUserRankings(userId);
+            return GetUserRankings(userId);
         }
     }
 }

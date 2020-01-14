@@ -62,3 +62,43 @@
     color: #fff;
   }
 }
+
+@media only screen and (max-device-width: 1366px) {
+  .users {
+    font-size: 14px;
+    width: 100%;
+
+    .row {
+      display: flex;
+      align-items: space-evenly;
+      padding: 5px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+
+      .col {
+        padding: 0 1%;
+      }
+
+      .col.place {
+        min-width: 30px;
+        width: 15%;
+      }
+
+      .col.name {
+        min-width: 50px;
+        width: 34%;
+      }
+
+      .col.winner {
+        min-width: 50px;
+        width: 34%;
+      }
+
+      .col.points {
+        min-width: 30px;
+        width: 15%;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@
 // $accent-palette: $mat-amber;
 $primary-palette: mat-palette($mat-red);
 $accent-palette: mat-palette($mat-indigo);
-$primary-color: mat-color($primary-palette, 500);
+$primary-color: #d80000;
 $accent-color: mat-color($accent-palette, 300);
 
 @mixin black-gradient {

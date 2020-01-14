@@ -1,13 +1,15 @@
 <div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
   <div class="sidenav-container scrollable" [style.min-height.px]="windowHeight" [style.width.px]="sidenavWidth"
     [@sidenavState]="sidenavOpened ? 'open' : 'closed'">
-    <mat-icon *ngIf="sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">close</mat-icon>
-    <bachelor-site-map></bachelor-site-map>
+    <mat-icon *ngIf="sidenavOpened && !(routeName === 'login')" class="toggle-menu" (click)="toggleSidenav()">close
+    </mat-icon>
+    <bachelor-site-map [userId]="currentUser.id" [userName]="currentUser.firstName" (logout)="logout()">
+    </bachelor-site-map>
   </div>
   <mat-icon *ngIf="!(routeName === 'login') && !sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">menu
   </mat-icon>
-  <!-- <mat-icon *ngIf="!(routeName === 'login')" class="home-icon" routerLink="/dashboard">home</mat-icon>
-  <button mat-button *ngIf="!(routeName === 'login')" class="logout frosted" (click)="logout()"
+  <mat-icon *ngIf="!(routeName === 'login') && !sidenavOpened" class="home-icon" routerLink="/dashboard">home</mat-icon>
+  <!-- <button mat-button *ngIf="!(routeName === 'login')" class="logout frosted" (click)="logout()"
     color="primary">Logout</button> -->
   <iu-wallpaper *ngIf="showWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="false">
   </iu-wallpaper>

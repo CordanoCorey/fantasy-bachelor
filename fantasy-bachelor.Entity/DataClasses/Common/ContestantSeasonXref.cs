@@ -12,6 +12,7 @@ namespace fantasy_bachelor.Entity.DataClasses
         }
         public int Id { get; set; }
         public int ContestantId { get; set; }
+        public int? Finish { get; set; }
         public int SeasonId { get; set; }
 
         public virtual Contestant Contestant { get; set; }

@@ -1,4 +1,4 @@
-import { Metadata, build, Validators, BaseEntity, Collection, CurrentUser as BaseCurrentUser, OrderedItem, Permutation, TypeConstructor, toArray } from '@caiu/library';
+import { Metadata, build, Validators, BaseEntity, Collection, CurrentUser as BaseCurrentUser, OrderedItem, Permutation, TypeConstructor, toArray, compareNumbers, toInt } from '@caiu/library';
 
 export { BaseEntity } from '@caiu/library';
 
@@ -9,7 +9,7 @@ export class User {
   lastName = '';
   order = 0;
   paid = false;
-  pickToWin = 'N/A';
+  pickToWinName = 'N/A';
   place = '';
   totalPoints = 0;
 }
@@ -18,10 +18,11 @@ export class Users extends Collection<User> {
 
   static AssignPlaces(data: User[]): User[] {
     const groupedByPointTotal = data.reduce((acc, x) => Object.assign({}, acc, { [x.totalPoints]: [...toArray(acc[x.totalPoints]), x] }), {});
-    return Object.keys(groupedByPointTotal).map((pts, i) => groupedByPointTotal[pts].map(y => build(User, y, {
-      order: i + 1,
-      place: groupedByPointTotal[pts].length > 1 ? `T${i + 1}` : `${i + 1}`
-    }))).reduce((acc, x) => [...acc, ...x], []);
+    return Object.keys(groupedByPointTotal).sort((a, b) => compareNumbers(toInt(a), toInt(b))).reverse()
+      .map((pts, i) => groupedByPointTotal[pts].map(y => build(User, y, {
+        order: i + 1,
+        place: groupedByPointTotal[pts].length > 1 ? `T${i + 1}` : `${i + 1}`
+      }))).reduce((acc, x) => [...acc, ...x], []);
   }
 
   usersLoaded = false;
@@ -197,6 +198,7 @@ export class Contestant {
   age = 0;
   bio = '';
   eliminated = false;
+  finish = 0;
   funFacts: string[] = [];
   hometown = '';
   profession = '';
@@ -254,7 +256,8 @@ export class Contestants extends Collection<Contestant> {
           `Every time Avonlea milks one of her cows, she thanks it for its hard work.`,
           `Avonlea enjoys playing the guitar and snuggling up by the fire to listen to a good audiobook.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       4: build(Contestant, {
         id: 4,
@@ -268,7 +271,9 @@ export class Contestants extends Collection<Contestant> {
           `Courtney is extremely claustrophobic.`,
           `Nothing makes Courtney happier than drinking a nice glass of wine while taking in a gorgeous view.`,
           `Courtney's biggest turn on is a man in cowboy boots.`
-        ]
+        ],
+        eliminated: true,
+        finish: 20
       }),
       5: build(Contestant, {
         id: 5,
@@ -297,7 +302,8 @@ export class Contestants extends Collection<Contestant> {
           `Eunice's favorite country to visit is Greece, and she can knock back ouzo like it's water.`,
           `Eunice's signature dance move is the ponytail helicopter.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       7: build(Contestant, {
         id: 7,
@@ -326,7 +332,8 @@ export class Contestants extends Collection<Contestant> {
           `Even though she is a flight attendant, Jade is VERY afraid of heights.`,
           `If Jade has to assign an aesthetic to her life, it would be "organized chaos."`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       9: build(Contestant, {
         id: 9,
@@ -355,7 +362,8 @@ export class Contestants extends Collection<Contestant> {
           `Jenna has a pet goldfish named George, and she says that George gives great advice.`,
           `When Jenna is not bowling strikes at the local alley, she's at home knitting.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       11: build(Contestant, {
         id: 11,
@@ -370,7 +378,8 @@ export class Contestants extends Collection<Contestant> {
           `On the weekends, Katrina loves to stay up late and eat junk food.`,
           `Katrina's biggest pet peeve is not being in control.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       12: build(Contestant, {
         id: 12,
@@ -427,7 +436,8 @@ export class Contestants extends Collection<Contestant> {
           `Kylie's dream vacation would be to go on safari in Africa.`,
           `Kylie grew up playing softball and is a batting cage queen.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       16: build(Contestant, {
         id: 16,
@@ -441,7 +451,9 @@ export class Contestants extends Collection<Contestant> {
           `Lauren says she has exit interviews with all of her exes to figure out what went wrong.`,
           `Lauren has traveled all over the world, but has yet to go the one place on her bucket list: Texas.`,
           `During Lauren's one season as a Laker Girl, she was so inspired by Kobe's passion for things outside of basketball that she left the team to pursue her other dreams.`
-        ]
+        ],
+        eliminated: true,
+        finish: 20
       }),
       17: build(Contestant, {
         id: 17,
@@ -484,7 +496,8 @@ export class Contestants extends Collection<Contestant> {
           `When Maurissa is feeling confident, she breaks into song.`,
           `Maurissa prefers to surround herself with people who have a more mature outlook on life. All of her best friends are at least 10 years older than her.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       20: build(Contestant, {
         id: 20,
@@ -499,7 +512,8 @@ export class Contestants extends Collection<Contestant> {
           `Megan is a facemask enthusiast.`,
           `One day, Megan hopes to travel to Zion National Park.`
         ],
-        eliminated: true
+        eliminated: true,
+        finish: 23
       }),
       21: build(Contestant, {
         id: 21,
@@ -541,7 +555,9 @@ export class Contestants extends Collection<Contestant> {
           `Payton loves to be the life of the party and her biggest fear is missing out.`,
           `Payton is not afraid of talking to strangers. In fact, she enjoys it!`,
           `Payton has a cute bulldog named Louise.`
-        ]
+        ],
+        eliminated: true,
+        finish: 20
       }),
       24: build(Contestant, {
         id: 24,
@@ -662,12 +678,13 @@ export class Ranking {
   contestantSrc = '';
   notes = '';
   order = 0;
+  points = 0;
   rank = 0;
   userId = 0;
 
   get metadata(): Metadata {
     return build(Metadata, {
-      ignore: ['id', 'contestantAge', 'contestantHometown', 'contestantName', 'contestantProfession', 'contestantSrc', 'order']
+      ignore: ['id', 'contestantAge', 'contestantHometown', 'contestantName', 'contestantProfession', 'contestantSrc', 'order', 'points']
     });
   }
 
@@ -681,6 +698,18 @@ export class Ranking {
 }
 
 export class Rankings extends Collection<Ranking> {
+
+  static CalculatePoints(rank: number, finish: number): number {
+    let pts = 0;
+    if (finish < 23 && rank < 23) {
+      pts += 1;
+    }
+    if (finish < 20 && rank < 20) {
+      pts += 2;
+    }
+    return pts;
+  }
+
   constructor() {
     super(Ranking);
   }

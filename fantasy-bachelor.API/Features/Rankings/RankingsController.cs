@@ -33,6 +33,13 @@ namespace fantasy_bachelor.API.Features.Rankings
             return Put(_service.UpdateRanking, model);
         }
 
+        [HttpGet("~/api/users/{id}/rankings")]
+        public IActionResult GetUserRankings(int id)
+        {
+            var result = _service.GetUserRankings(id);
+            return Ok(result);
+        }
+
         [HttpPut("~/api/users/{id}/rankings")]
         public IActionResult PutUserRankings(int id, [FromBody]IEnumerable<RankingModel> model)
         {

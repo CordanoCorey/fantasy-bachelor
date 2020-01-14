@@ -18,8 +18,7 @@
     margin: 15px 0;
 
     mat-icon {
-      color: rgb(142, 142, 142);
-      color: $primary-color;
+      color: #fff;
       font-size: 48px;
       height: 48px;
       width: 48px;
@@ -27,7 +26,21 @@
     }
 
     .btn-label {
-      //display: inline-flex;
+      color: $primary-color;
+    }
+  }
+
+  .logout {
+    @include black-hgradient();
+    padding: 10px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 15px 0;
+
+    .btn-label {
       color: #fff;
     }
   }
@@ -37,6 +50,10 @@
 
     mat-icon {
       color: #c0c0c0;
+    }
+
+    .btn-label {
+      color: #fff;
     }
   }
 }

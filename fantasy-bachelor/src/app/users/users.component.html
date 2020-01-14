@@ -8,7 +8,7 @@
   <div class="row" *ngFor="let user of users$ | async; index as i" [routerLink]="'/rankings/' + user.id">
     <div class="col place">{{ user.place }}</div>
     <div class="col name">{{ user.firstName }}</div>
-    <div class="col winner">{{ user.pickToWin }}</div>
+    <div class="col winner">{{ user.pickToWinName }}</div>
     <div class="col points">{{ user.totalPoints }}</div>
   </div>
 </div>

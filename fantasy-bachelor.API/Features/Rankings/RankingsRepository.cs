@@ -13,7 +13,10 @@ namespace fantasy_bachelor.API.Features.Rankings
 {
     public interface IRankingsRepository : IBaseRepository<Ranking, RankingModel>
     {
-        IEnumerable<RankingModel> GetUserRankings(int userId);
+        int CalculatePoints(int userId);
+        IEnumerable<RankingModel> FindByUser(int userId);
+        string FindPickToWinName(int userId);
+        int? FindPickToWinId(int userId);
         void SaveUserRankings(IEnumerable<RankingModel> rankings);
     }
 
@@ -23,9 +26,41 @@ namespace fantasy_bachelor.API.Features.Rankings
         {
         }
 
-        public IEnumerable<RankingModel> GetUserRankings(int userId)
+        public int CalculatePoints(int userId)
+        {
+            var userRankings = FindByUser(userId);
+            if (!userRankings.Any())
+            {
+                return 0;
+            }
+            return userRankings.Aggregate(0, (acc, ranking) =>
+            {
+                var pts = 0;
+                if (ranking.ContestantFinish < 23 && (ranking.Rank + 1) < 23)
+                {
+                    pts += 1;
+                }
+                if (ranking.ContestantFinish < 20 && (ranking.Rank + 1) < 20)
+                {
+                    pts += 2;
+                }
+                return acc + pts;
+            });
+        }
+
+        public IEnumerable<RankingModel> FindByUser(int userId)
         {
             return FindBy(x => x.UserId == userId);
+        }
+
+        public string FindPickToWinName(int userId)
+        {
+            return FindFirst(x => x.UserId == userId && x.Rank == 0)?.ContestantName;
+        }
+
+        public int? FindPickToWinId(int userId)
+        {
+            return FindFirst(x => x.UserId == userId && x.Rank == 0)?.ContestantSeasonId;
         }
 
         public void SaveUserRankings(IEnumerable<RankingModel> rankings)
@@ -41,6 +76,14 @@ namespace fantasy_bachelor.API.Features.Rankings
                     Update(ranking);
                 }
             }
+        }
+
+        protected override IQueryable<Ranking> Include(IQueryable<Ranking> queryable)
+        {
+            return queryable
+                .Include(x => x.ContestantSeason)
+                    .ThenInclude(y => y.Contestant)
+            ;
         }
     }
 }

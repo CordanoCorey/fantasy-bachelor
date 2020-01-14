@@ -4,7 +4,7 @@ import { SmartComponent, ViewSettingsActions, sidenavOpenedSelector, windowHeigh
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Contestant, CurrentUser } from '../models';
-import { contestantsArraySelector, currentUserSelector } from '../selectors';
+import { contestantsArraySelector, currentUserSelector, currentUserIdSelector } from '../selectors';
 
 @Component({
   selector: 'bachelor-container',
@@ -126,7 +126,7 @@ export class ContainerComponent extends SmartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sync(['contestants', 'sidenavOpened', 'windowHeight', 'windowWidth']);
+    this.sync(['contestants', 'currentUser', 'routeName', 'sidenavOpened', 'windowHeight', 'windowWidth']);
   }
 
   changeTheme() {

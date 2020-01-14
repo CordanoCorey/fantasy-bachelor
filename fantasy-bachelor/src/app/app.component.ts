@@ -144,14 +144,14 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.sync(['lastActive', 'loggedIn', 'userId', 'urlPath']);
     this.addSubscription(this.toastChanges);
     this.addSubscription(this.errorMessageChanges);
-    // this.addSubscription(this.routeName$.subscribe(x => {
-    //   this.routeName = x;
-    //   if (x === 'dashboard') {
-    //     this.openSidenav();
-    //   } else {
-    //     this.closeSidenav();
-    //   }
-    // }));
+    this.addSubscription(this.routeName$.subscribe(x => {
+      this.routeName = x;
+      // if (x === 'dashboard') {
+      //   this.openSidenav();
+      // } else {
+      this.closeSidenav();
+      //}
+    }));
     this.contestantId$.subscribe(id => {
       this.contestantId = id;
       if (id) {

@@ -1,3 +1,4 @@
+using fantasy_bachelor.API.Features.Rankings;
 using fantasy_bachelor.Entity.DataClasses;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,12 @@ namespace fantasy_bachelor.API.Features.Users
     public class UsersService : IUsersService
     {
         private readonly IUsersRepository _repo;
+        private readonly IRankingsRepository _rankings;
 
-        public UsersService(IUsersRepository repo)
+        public UsersService(IUsersRepository repo, IRankingsRepository rankings)
         {
             _repo = repo;
+            _rankings = rankings;
         }
 
         public void DeleteUser(int id)
@@ -49,7 +52,12 @@ namespace fantasy_bachelor.API.Features.Users
 
         public IEnumerable<UserModel> GetUsers()
         {
-            return _repo.All();
+            List<UserModel> users = _repo.All().ToList();
+            foreach(var user in users) {
+                user.PickToWinName = _rankings.FindPickToWinName(user.Id);
+                user.TotalPoints = _rankings.CalculatePoints(user.Id);
+            }
+            return users;
         }
 
         public UserModel InsertUser(UserModel model)

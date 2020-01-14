@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fantasy_bachelor.Entity.Context;
 
 namespace fantasy_bachelor.Entity.Migrations
 {
     [DbContext(typeof(FantasyBachelorContext))]
-    partial class FantasyBachelorContextModelSnapshot : ModelSnapshot
+    [Migration("20200114060018_contestant_finish")]
+    partial class contestant_finish
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -875,6 +877,9 @@ namespace fantasy_bachelor.Entity.Migrations
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
 
+                    b.Property<int?>("Finish")
+                        .HasColumnType("int");
+
                     b.Property<string>("Hometown")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
@@ -916,6 +921,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 3,
                             Age = 27,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Avonlea",
                             Profession = ""
@@ -925,6 +931,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 4,
                             Age = 26,
                             Bio = "",
+                            Finish = 20,
                             Hometown = "",
                             Name = "Courtney",
                             Profession = ""
@@ -943,6 +950,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 6,
                             Age = 23,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Eunice",
                             Profession = ""
@@ -961,6 +969,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 8,
                             Age = 26,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Jade",
                             Profession = ""
@@ -979,6 +988,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 10,
                             Age = 22,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Jenna",
                             Profession = ""
@@ -988,6 +998,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 11,
                             Age = 28,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Katrina",
                             Profession = ""
@@ -1024,6 +1035,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 15,
                             Age = 25,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Kylie",
                             Profession = ""
@@ -1033,6 +1045,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 16,
                             Age = 26,
                             Bio = "",
+                            Finish = 20,
                             Hometown = "",
                             Name = "Lauren",
                             Profession = ""
@@ -1060,6 +1073,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 19,
                             Age = 23,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Maurissa",
                             Profession = ""
@@ -1069,6 +1083,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 20,
                             Age = 26,
                             Bio = "",
+                            Finish = 23,
                             Hometown = "",
                             Name = "Megan",
                             Profession = ""
@@ -1096,6 +1111,7 @@ namespace fantasy_bachelor.Entity.Migrations
                             Id = 23,
                             Age = 23,
                             Bio = "",
+                            Finish = 20,
                             Hometown = "",
                             Name = "Payton",
                             Profession = ""
@@ -1175,9 +1191,6 @@ namespace fantasy_bachelor.Entity.Migrations
                     b.Property<int>("ContestantId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Finish")
-                        .HasColumnType("int");
-
                     b.Property<int>("SeasonId")
                         .HasColumnType("int");
 
@@ -1206,14 +1219,12 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 3,
                             ContestantId = 3,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
                         {
                             Id = 4,
                             ContestantId = 4,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1226,7 +1237,6 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 6,
                             ContestantId = 6,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1239,7 +1249,6 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 8,
                             ContestantId = 8,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1252,14 +1261,12 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 10,
                             ContestantId = 10,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
                         {
                             Id = 11,
                             ContestantId = 11,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1284,14 +1291,12 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 15,
                             ContestantId = 15,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
                         {
                             Id = 16,
                             ContestantId = 16,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1310,14 +1315,12 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 19,
                             ContestantId = 19,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
                         {
                             Id = 20,
                             ContestantId = 20,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new
@@ -1336,7 +1339,6 @@ namespace fantasy_bachelor.Entity.Migrations
                         {
                             Id = 23,
                             ContestantId = 23,
-                            Finish = 20,
                             SeasonId = 1
                         },
                         new

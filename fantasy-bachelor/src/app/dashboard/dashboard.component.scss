@@ -17,9 +17,9 @@
     font-size: 56px;
     margin-bottom: 60px;
     padding: 20px 40px;
-    position: absolute;
-    top: 0;
-    left: 50px;
+    // position: absolute;
+    // top: 0;
+    // left: 50px;
   }
 
   mat-toolbar {
@@ -29,7 +29,7 @@
   }
 
   bachelor-users {
-    min-height: 500px;
+    min-height: 400px;
     max-height: 60%;
     max-width: 90%;
     display: flex;
@@ -57,6 +57,7 @@
 @media only screen and (max-device-width: 1366px) {
   #dashboard {
     justify-content: flex-start;
+    overflow: hidden;
 
     .btn-rank {
       color: #fff;
@@ -81,7 +82,16 @@
 
     .welcome {
       font-size: 20px;
-      margin-top: 60px;
+      margin-top: 100px;
+      margin-bottom: 20px;
+    }
+
+    bachelor-users {
+      min-height: 400px;
+      max-height: 60%;
+      max-width: unset;
+      width: 96%;
+      display: flex;
     }
   }
 }

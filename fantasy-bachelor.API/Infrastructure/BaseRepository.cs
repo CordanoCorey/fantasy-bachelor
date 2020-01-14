@@ -38,6 +38,7 @@ namespace fantasy_bachelor.API.Infrastructure
         TModel FindByKey(string id, string keyName); //Retrieves a single row from a table by primary key not named “Id” with type string.
         TModel FindByKey(long val, string keyName);  //Retrieves a single row from a table by primary key not named “Id” with type long.
         TModel FindSingle(Expression<Func<TEntity, bool>> lambda); //Retrieves a single row from a table using custom WHERE clause.
+        TModel FindFirst(Expression<Func<TEntity, bool>> lambda); //Retrieves first row from a table using custom WHERE clause.
         TModel Insert(TModel model); //Insert single row
         void Insert(IEnumerable<TModel> model); //Insert multiple rows
         void InsertUnsaved(TModel model); //Insert single row without saving changes
@@ -304,6 +305,12 @@ namespace fantasy_bachelor.API.Infrastructure
             return Map(result);
         }
 
+        public TModel FindFirst(Expression<Func<TEntity, bool>> lambda)
+        {
+            TEntity result = FindFirstEntity(lambda);
+            return Map(result);
+        }
+
         //Retrieves a single row from a table by primary key. 
         protected virtual TEntity FindEntityByKey(int id)
         {
@@ -350,6 +357,12 @@ namespace fantasy_bachelor.API.Infrastructure
         protected TEntity FindSingleEntity(Expression<Func<TEntity, bool>> lambda)
         {
             return DbSetSingle.SingleOrDefault(lambda);
+        }
+
+        //Retrieves a single row from a table using custom WHERE clause. 
+        protected TEntity FindFirstEntity(Expression<Func<TEntity, bool>> lambda)
+        {
+            return DbSetSingle.FirstOrDefault(lambda);
         }
 
         protected virtual IQueryable<TEntity> Include(IQueryable<TEntity> queryable)

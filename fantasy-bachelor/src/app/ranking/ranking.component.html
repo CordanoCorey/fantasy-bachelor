@@ -1,18 +1,25 @@
 <bachelor-container [hasWallpaper]="false">
   <div id="ranking">
-    <div class="user-name">{{ userName$ | async }}</div>
-    <div class="total-points">58 total points</div>
-    <div class="contestant" *ngFor="let contestant of contestants; index as i;" (click)="toContestant(contestant.id)">
+    <div class="top">
+      <div class="user-name frosted">{{ userName$ | async }}</div>
+      <div class="total-points frosted">{{ totalPoints$ | async }} total points</div>
+      <div class="contestants-remaining frosted">{{ contestantsRemaining$ | async }} contestants remaining</div>
+    </div>
+    <div class="contestant" *ngFor="let ranking of rankings$ | async; index as i;"
+      (click)="toContestant(ranking.contestantSeasonId)">
       <span class="rank">{{ i + 1 }}</span>
       <div class="middle">
-        <img [src]="contestant.src">
+        <img [src]="ranking.contestantSrc">
         <p class="info">
-          <span class="title">{{ contestant.name }}, {{ contestant.age }}</span>
-          <span class="subtitle">{{ contestant.profession }}, {{ contestant.hometown }}</span>
+          <span class="title">{{ ranking.contestantName }}<span class="age">, {{ ranking.contestantAge }}</span></span>
+          <span class="subtitle">{{ ranking.contestantProfession }}, {{ ranking.contestantHometown }}</span>
         </p>
       </div>
-      <div *ngIf="i % 2 === 0" class="status active">Active</div>
-      <div *ngIf="i % 2 === 1" class="status inactive">Eliminated</div>
+      <div class="points">
+        <span class="points-label">Points Earned:</span>
+        <span class="points-value">{{ ranking.points }}</span>
+      </div>
+      <div *ngIf="ranking.contestantEliminated" class="status inactive">Eliminated</div>
     </div>
   </div>
 </bachelor-container>

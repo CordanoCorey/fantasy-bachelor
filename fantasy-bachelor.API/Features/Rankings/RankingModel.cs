@@ -9,6 +9,8 @@ namespace fantasy_bachelor.API.Features.Rankings
     public class RankingModel
     {
         public int Id { get; set; }
+        public int? ContestantFinish { get; set; }
+        public string ContestantName { get; set; }
         public int ContestantSeasonId { get; set; }
         public string Notes { get; set; }
         public int Rank { get; set; }
