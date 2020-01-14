@@ -20,7 +20,8 @@ import {
   HttpActions,
   routeParamIdSelector,
   RouterActions,
-  urlPathSelector
+  urlPathSelector,
+  SidenavActions
 } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -140,9 +141,17 @@ export class AppComponent extends SmartComponent implements OnInit {
     //     this.autoLogout();
     //   }
     // }, 1800000);
-    this.sync(['lastActive', 'loggedIn', 'routeName', 'userId', 'urlPath']);
+    this.sync(['lastActive', 'loggedIn', 'userId', 'urlPath']);
     this.addSubscription(this.toastChanges);
     this.addSubscription(this.errorMessageChanges);
+    // this.addSubscription(this.routeName$.subscribe(x => {
+    //   this.routeName = x;
+    //   if (x === 'dashboard') {
+    //     this.openSidenav();
+    //   } else {
+    //     this.closeSidenav();
+    //   }
+    // }));
     this.contestantId$.subscribe(id => {
       this.contestantId = id;
       if (id) {
@@ -175,6 +184,14 @@ export class AppComponent extends SmartComponent implements OnInit {
     //   this.loggingOut = false;
     // }
     super.closeDialog(result);
+  }
+
+  closeSidenav() {
+    this.dispatch(SidenavActions.close());
+  }
+
+  openSidenav() {
+    this.dispatch(SidenavActions.open());
   }
 
   getRankings() {

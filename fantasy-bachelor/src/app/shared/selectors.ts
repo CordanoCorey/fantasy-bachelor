@@ -112,6 +112,20 @@ export function activeUserRankingsSelector(store: Store<any>): Observable<Rankin
   });
 }
 
+export function activeUserContestantRankingsSelector(store: Store<any>): Observable<Ranking[]> {
+  return combineLatest(activeUserRankingsSelector(store), contestantsArraySelector(store), (rankings, contestants) => {
+    return contestants.map(x => build(Ranking, rankings.find(y => y.contestantSeasonId === x.id), {
+      contestantAge: x.age,
+      contestantHometown: x.hometown,
+      contestantName: x.name,
+      contestantProfession: x.profession,
+      contestantSeasonId: x.id,
+      contestantSrc: x.src,
+      contestantEliminated: x.eliminated
+    })).sort((a, b) => compareNumbers((a.contestantEliminated ? 100 : 0) + a.rank, (b.contestantEliminated ? 100 : 0) + b.rank)).map((x, i) => build(Ranking, x, { order: i }));
+  });
+}
+
 export function currentUserRankingsSelector(store: Store<any>): Observable<Ranking[]> {
   return combineLatest(rankingsSelector(store), currentUserIdSelector(store), (rankings, userId) => {
     return rankings.asArray.filter(x => x.userId === userId);

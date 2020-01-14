@@ -3,10 +3,47 @@
 
 #container {
 
+  .sidenav-container {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    z-index: 8;
+    width: 200px;
+    box-shadow: 10px 0 5px -2px #888;
+    background: rgba(218, 218, 218, 0.9);
+
+    bachelor-site-map {
+      display: grid;
+    }
+  }
+
+  .toggle-menu {
+    @include primary-gradient();
+    @include mat-elevation(16);
+    position: fixed;
+    z-index: 10;
+    color: #fff;
+    font-size: 48px;
+    cursor: pointer;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    font-size: 64px;
+    height: 64px;
+    width: 64px;
+    padding: 10px 20px;
+  }
+
+  .toggle-menu:hover {
+    @include silver-gradient();
+    color: $primary-color;
+  }
+
   .home-icon {
     position: absolute;
     top: 0px;
-    left: 0px;
+    right: 140px;
     font-size: 64px;
     color: $primary-color;
     cursor: pointer;
@@ -34,35 +71,35 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-  }
 
-  .roses-header {
-    position: fixed;
-    top: 0px;
-    left: 25%;
-    width: 50%;
-    z-index: 1;
-  }
+    .roses-header {
+      position: fixed;
+      top: 0px;
+      left: 25%;
+      width: 50%;
+      z-index: 1;
+    }
 
-  .roses-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    -webkit-transform: rotate(180deg);
-    /* Chrome and other webkit browsers */
-    -moz-transform: rotate(180deg);
-    /* FF */
-    -o-transform: rotate(180deg);
-    /* Opera */
-    -ms-transform: rotate(180deg);
-    /* IE9 */
-    transform: rotate(180deg);
-    /* W3C compliant browsers */
+    .roses-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      -webkit-transform: rotate(180deg);
+      /* Chrome and other webkit browsers */
+      -moz-transform: rotate(180deg);
+      /* FF */
+      -o-transform: rotate(180deg);
+      /* Opera */
+      -ms-transform: rotate(180deg);
+      /* IE9 */
+      transform: rotate(180deg);
+      /* W3C compliant browsers */
 
-    /* IE8 and below */
-    filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
-    z-index: 0;
+      /* IE8 and below */
+      filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
+      z-index: 0;
+    }
   }
 }
 

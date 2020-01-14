@@ -15,7 +15,7 @@ import { allUsersSelector } from '../shared/selectors';
     trigger('expandable', [
       transition(':enter', [
         style({ height: '30px' }),
-        animate('2.5s ease-in-out', style({ height: '*' })),
+        animate('1s ease-in-out', style({ height: '*' })),
       ])
     ])
   ]

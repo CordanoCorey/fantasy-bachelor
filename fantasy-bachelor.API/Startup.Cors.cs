@@ -22,11 +22,11 @@ namespace fantasy_bachelor.API
                 options.AddPolicy("AllowAll", config =>
                 {
                     config
-                    //.WithOrigins("http://finalroses.com", "http://www.finalroses.com", "http://localhost:4202")
-                    .AllowAnyHeader();
-                    config.AllowAnyMethod();
-                    config.AllowAnyOrigin();
-                    //config.AllowCredentials();
+                        //.WithOrigins("http://finalroses.com", "http://www.finalroses.com", "http://localhost:4202")
+                        .AllowAnyHeader();
+                        config.AllowAnyMethod();
+                        config.AllowAnyOrigin();
+                        //config.AllowCredentials();
                 });
             });
         }

@@ -22,9 +22,29 @@
       cursor: pointer;
       width: 30%;
 
+      h2 {
+        margin-bottom: 0;
+      }
+
       img {
         max-width: 90%;
         @include mat-elevation(6);
+      }
+
+      .status {
+        height: 20px;
+        font-size: 16px;
+        font-family: 'Saira Stencil One', cursive;
+        font-family: 'Stardos Stencil', cursive;
+        text-transform: uppercase;
+        border-top: 2px double #000;
+        border-bottom: 2px double #000;
+        margin: 5px 0 10px 0;
+      }
+
+      .status.inactive {
+        border-color: red;
+        color: red;
       }
 
       .info {

@@ -201,6 +201,7 @@ export class Contestant {
   hometown = '';
   profession = '';
   name = '';
+  paid = false;
   src = '';
   userNotes = '';
   userPoints = 0;

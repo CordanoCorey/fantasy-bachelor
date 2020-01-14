@@ -30,6 +30,24 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    position: relative;
+
+    .status {
+      height: 20px;
+      font-size: 16px;
+      font-family: 'Saira Stencil One', cursive;
+      font-family: 'Stardos Stencil', cursive;
+      text-transform: uppercase;
+      border-top: 2px double #000;
+      border-bottom: 2px double #000;
+      position: absolute;
+      top: 55px;
+    }
+
+    .status.inactive {
+      border-color: red;
+      color: red;
+    }
 
     img {
       width: 100%;

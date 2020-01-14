@@ -2,6 +2,7 @@
   <div id="contestants" class="scrollable">
     <div class="card" *ngFor="let contestant of contestants$ | async" (click)="toContestant(contestant.id)">
       <h2>{{ contestant.name }}</h2>
+      <div *ngIf="contestant.eliminated" class="status inactive">Eliminated</div>
       <img [src]="contestant.src">
     </div>
   </div>

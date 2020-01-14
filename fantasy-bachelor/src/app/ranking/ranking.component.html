@@ -2,7 +2,7 @@
   <div id="ranking">
     <div class="user-name">{{ userName$ | async }}</div>
     <div class="total-points">58 total points</div>
-    <div class="contestant" *ngFor="let contestant of contestants; index as i;" cdkDrag>
+    <div class="contestant" *ngFor="let contestant of contestants; index as i;" (click)="toContestant(contestant.id)">
       <span class="rank">{{ i + 1 }}</span>
       <div class="middle">
         <img [src]="contestant.src">

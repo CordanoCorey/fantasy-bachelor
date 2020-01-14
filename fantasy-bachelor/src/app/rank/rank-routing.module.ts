@@ -6,7 +6,8 @@ import { RankComponent } from './rank.component';
 
 const routes: Routes = [{
   path: '',
-  component: RankComponent
+  component: RankComponent,
+  data: { routeName: 'rank', routeLabel: 'Rank' }
 }];
 
 @NgModule({

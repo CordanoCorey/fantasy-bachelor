@@ -2,6 +2,7 @@
   <div class="top">
     <div class="left">
       <h2>{{ contestant.name }}</h2>
+      <div *ngIf="contestant.eliminated" class="status inactive">Eliminated</div>
       <img [src]="contestant.src">
       <div class="info">
         <p><span class="attr">Age</span><span class="val">{{ contestant.age }}</span></p>

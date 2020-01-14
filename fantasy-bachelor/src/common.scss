@@ -59,6 +59,21 @@ $accent-color: mat-color($accent-palette, 300);
   /* IE6-9 */
 }
 
+@mixin primary-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b00000+0,d80000+54,fc2222+100 */
+  background: #b00000;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #b00000 0%, #d80000 54%, #fc2222 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b00000 0%, #d80000 54%, #fc2222 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b00000 0%, #d80000 54%, #fc2222 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b00000', endColorstr='#fc2222', GradientType=0);
+  /* IE6-9 */
+
+}
+
 @mixin calendar-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);

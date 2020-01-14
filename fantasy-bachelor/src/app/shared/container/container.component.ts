@@ -3,8 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { SmartComponent, ViewSettingsActions, sidenavOpenedSelector, windowHeightSelector, windowWidthSelector, SidenavActions, build, Image, routeNameSelector, CurrentUserActions } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Contestant } from '../models';
-import { contestantsArraySelector } from '../selectors';
+import { Contestant, CurrentUser } from '../models';
+import { contestantsArraySelector, currentUserSelector } from '../selectors';
 
 @Component({
   selector: 'bachelor-container',
@@ -21,23 +21,7 @@ import { contestantsArraySelector } from '../selectors';
       state(
         'open',
         style({
-          width: '135px'
-        })
-      ),
-      transition('closed => open', animate('350ms ease-in')),
-      transition('open => closed', animate('350ms ease-out'))
-    ]),
-    trigger('sidenavPadding', [
-      state(
-        'closed',
-        style({
-          'padding-left': '0px'
-        })
-      ),
-      state(
-        'open',
-        style({
-          'padding-left': '135px'
+          width: '335px'
         })
       ),
       transition('closed => open', animate('350ms ease-in')),
@@ -53,7 +37,7 @@ import { contestantsArraySelector } from '../selectors';
       state(
         'open',
         style({
-          left: '135px'
+          left: '335px'
         })
       ),
       transition('closed => open', animate('350ms ease-in')),
@@ -61,10 +45,12 @@ import { contestantsArraySelector } from '../selectors';
     ])
   ]
 })
-export class ContainerComponent extends SmartComponent implements OnInit, AfterViewInit {
+export class ContainerComponent extends SmartComponent implements OnInit {
   @Input() hasWallpaper = true;
   contestants: Contestant[] = [];
   contestants$: Observable<Contestant[]>;
+  currentUser: CurrentUser = new CurrentUser();
+  currentUser$: Observable<CurrentUser>;
   isDarkTheme = true;
   routeName = '';
   routeName$: Observable<string>;
@@ -82,6 +68,7 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
     this.windowHeight$ = windowHeightSelector(store);
     this.windowWidth$ = windowWidthSelector(store);
     this.contestants$ = contestantsArraySelector(store);
+    this.currentUser$ = currentUserSelector(store);
   }
 
   get images(): Image[] {
@@ -125,26 +112,21 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
     );
   }
 
+  get contentWidth(): number {
+    return this.windowWidth - this.contentWidth;
+  }
+
   get showWallpaper() {
     return this.hasWallpaper && !this.isMobile;
   }
 
   get sidenavWidth(): number {
-    return this.sidenavOpened ? (this.isMobile ? this.windowWidth : 135) : 0;
+    // return this.sidenavOpened ? (this.isMobile ? this.windowWidth : 135) : 0;
+    return this.sidenavOpened ? 335 : 0;
   }
 
   ngOnInit() {
-    this.sync(['contestants', 'routeName', 'sidenavOpened', 'windowHeight', 'windowWidth']);
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      if (this.isMobile) {
-        this.closeSidenav();
-      } else {
-        this.openSidenav();
-      }
-    }, 0);
+    this.sync(['contestants', 'sidenavOpened', 'windowHeight', 'windowWidth']);
   }
 
   changeTheme() {
@@ -175,5 +157,9 @@ export class ContainerComponent extends SmartComponent implements OnInit, AfterV
     if (this.elementRef && this.elementRef.nativeElement) {
       this.elementRef.nativeElement.style.width = `${this.windowWidth}px`;
     }
+  }
+
+  toggleSidenav() {
+    this.store.dispatch(SidenavActions.toggle());
   }
 }

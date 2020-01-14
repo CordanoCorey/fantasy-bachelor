@@ -1,19 +1,20 @@
-<div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth + 50">
-  <!-- <mat-icon *ngIf="!showWallpaper && !(routeName === 'login')" class="home-icon" routerLink="/dashboard">home</mat-icon>
-  <button mat-button *ngIf="!showWallpaper && !(routeName === 'login')" class="logout" (click)="logout()"
-    color="primary">Log
-    Out</button> -->
-  <mat-icon *ngIf="!(routeName === 'login')" class="home-icon" routerLink="/dashboard">home</mat-icon>
+<div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
+  <div class="sidenav-container scrollable" [style.min-height.px]="windowHeight" [style.width.px]="sidenavWidth"
+    [@sidenavState]="sidenavOpened ? 'open' : 'closed'">
+    <mat-icon *ngIf="sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">close</mat-icon>
+    <bachelor-site-map></bachelor-site-map>
+  </div>
+  <mat-icon *ngIf="!(routeName === 'login') && !sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">menu
+  </mat-icon>
+  <!-- <mat-icon *ngIf="!(routeName === 'login')" class="home-icon" routerLink="/dashboard">home</mat-icon>
   <button mat-button *ngIf="!(routeName === 'login')" class="logout frosted" (click)="logout()"
-    color="primary">Logout</button>
-  <img *ngIf="!showWallpaper && !(routeName === 'login')" class="roses-header" src="../../assets/roses-header.png" />
-  <!-- <iu-wallpaper *ngIf="showWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="false" [minCellWidth]="60"
-    [minCellHeight]="60">
-  </iu-wallpaper> -->
+    color="primary">Logout</button> -->
   <iu-wallpaper *ngIf="showWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="false">
   </iu-wallpaper>
-  <div id="content" class="scrollable" fxLayout="column" fxLayoutGap="16px" [style.left.px]="0">
+  <div id="content" class="scrollable parallax" [@contentState]="sidenavOpened ? 'open' : 'closed'" fxLayout="column"
+    fxLayoutGap="16px" [style.left.px]="sidenavWidth" [style.width.px]="windowWidth - sidenavWidth">
+    <img *ngIf="!showWallpaper && !(routeName === 'login')" class="roses-header" src="../../assets/roses-header.png" />
     <ng-content></ng-content>
+    <img *ngIf="!showWallpaper && !(routeName === 'login')" class="roses-footer" src="../../assets/rose-petals.png">
   </div>
-  <img *ngIf="!showWallpaper && !(routeName === 'login')" class="roses-footer" src="../../assets/rose-petals.png">
 </div>

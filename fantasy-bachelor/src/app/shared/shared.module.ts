@@ -23,9 +23,10 @@ import { FormsModule, AccordionModule, DialogModule, PipesModule, WallpaperModul
 
 import { ContainerComponent } from './container/container.component';
 import { environment } from '../../environments/environment';
+import { SiteMapComponent } from './site-map/site-map.component';
 
 @NgModule({
-  declarations: [ContainerComponent],
+  declarations: [ContainerComponent, SiteMapComponent],
   imports: [
     CommonModule,
     AccordionModule,
