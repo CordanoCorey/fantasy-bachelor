@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fantasy_bachelor.Entity.Context;
 
 namespace fantasy_bachelor.Entity.Migrations
 {
     [DbContext(typeof(FantasyBachelorContext))]
-    partial class FantasyBachelorContextModelSnapshot : ModelSnapshot
+    [Migration("20200111202718_add_users_8")]
+    partial class add_users_8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -804,60 +806,6 @@ namespace fantasy_bachelor.Entity.Migrations
                             SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                             TwoFactorEnabled = false,
                             UserName = "rmo104@psu.edu"
-                        },
-                        new
-                        {
-                            Id = 33,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "megangodfrey97@gmail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Megan",
-                            LastName = "Godfrey",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "megangodfrey97@gmail.com",
-                            NormalizedUserName = "megangodfrey97@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "megangodfrey97@gmail.com"
-                        },
-                        new
-                        {
-                            Id = 34,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "donna@dgodfreylaw.com",
-                            EmailConfirmed = false,
-                            FirstName = "Donna",
-                            LastName = "Godfrey",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "donna@dgodfreylaw.com",
-                            NormalizedUserName = "donna@dgodfreylaw.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "donna@dgodfreylaw.com"
-                        },
-                        new
-                        {
-                            Id = 35,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "morgan.ciecierski10@gmail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Morgan",
-                            LastName = "",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "morgan.ciecierski10@gmail.com",
-                            NormalizedUserName = "morgan.ciecierski10@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "morgan.ciecierski10@gmail.com"
                         });
                 });
 

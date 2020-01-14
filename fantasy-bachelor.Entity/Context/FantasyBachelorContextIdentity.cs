@@ -503,6 +503,86 @@ namespace fantasy_bachelor.Entity.Context
                         PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                         SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                         UserName = "ipeleg@hotmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 31,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "addieorndorff@gmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Addie",
+                        LastName = "Orndorff",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "addieorndorff@gmail.com",
+                        NormalizedUserName = "addieorndorff@gmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "addieorndorff@gmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 32,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "rmo104@psu.edu",
+                        EmailConfirmed = false,
+                        FirstName = "Bob",
+                        LastName = "Orndorff",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "rmo104@psu.edu",
+                        NormalizedUserName = "rmo104@psu.edu",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "rmo104@psu.edu"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 33,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "megangodfrey97@gmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Megan",
+                        LastName = "Godfrey",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "megangodfrey97@gmail.com",
+                        NormalizedUserName = "megangodfrey97@gmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "megangodfrey97@gmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 34,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "donna@dgodfreylaw.com",
+                        EmailConfirmed = false,
+                        FirstName = "Donna",
+                        LastName = "Godfrey",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "donna@dgodfreylaw.com",
+                        NormalizedUserName = "donna@dgodfreylaw.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "donna@dgodfreylaw.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 35,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "morgan.ciecierski10@gmail.com",
+                        EmailConfirmed = false,
+                        FirstName = "Morgan",
+                        LastName = "",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "morgan.ciecierski10@gmail.com",
+                        NormalizedUserName = "morgan.ciecierski10@gmail.com",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "morgan.ciecierski10@gmail.com"
                     }
                   );
             });
