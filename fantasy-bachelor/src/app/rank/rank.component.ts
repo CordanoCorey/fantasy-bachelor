@@ -32,7 +32,6 @@ export class RankComponent extends SmartComponent implements OnInit {
   }
 
   set rankings(value: Ranking[]) {
-    console.dir(value.map(x => `${x.order}. ${x.contestantName}`));
     this._rankings = value;
     this.orderingSubject.next(new Ordering(value, Ranking));
   }

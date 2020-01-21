@@ -31,7 +31,6 @@ export class UsersComponent extends SmartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users$.subscribe(x => { console.dir(x); });
   }
 
 }

@@ -64,9 +64,14 @@
 }
 
 @media only screen and (max-device-width: 1366px) {
+
   .users {
+    @include mat-elevation(0);
+    display: block;
     font-size: 14px;
     width: 100%;
+    height: auto;
+    background: transparent;
 
     .row {
       display: flex;
@@ -75,6 +80,7 @@
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
+      min-height: 24px;
 
       .col {
         padding: 0 1%;

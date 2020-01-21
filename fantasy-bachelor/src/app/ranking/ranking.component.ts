@@ -44,7 +44,6 @@ export class RankingComponent extends SmartComponent implements OnInit {
 
   ngOnInit() {
     this.sync(['activeUserId', 'contestants']);
-    this.rankings$.subscribe(x => { console.dir(x); });
   }
 
   getUserRankings(userId: number) {

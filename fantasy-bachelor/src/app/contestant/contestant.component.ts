@@ -28,7 +28,6 @@ export class ContestantComponent extends SmartComponent implements OnInit {
   }
 
   set contestant(value: Contestant) {
-    console.dir(value);
     this._contestant = value;
     this.notes = value.userNotes;
   }

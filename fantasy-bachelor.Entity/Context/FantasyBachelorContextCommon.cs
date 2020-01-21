@@ -323,13 +323,15 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 1,
                       ContestantId = 1,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 16
                   },
                   new ContestantSeasonXref
                   {
                       Id = 2,
                       ContestantId = 2,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 16
                   },
                   new ContestantSeasonXref
                   {
@@ -375,7 +377,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 9,
                       ContestantId = 9,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 16
                   },
                   new ContestantSeasonXref
                   {
@@ -472,7 +475,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 24,
                       ContestantId = 24,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 16
                   },
                   new ContestantSeasonXref
                   {
@@ -543,13 +547,6 @@ namespace fantasy_bachelor.Entity.Context
                   .WithMany(p => p.RankingUser)
                   .HasForeignKey(d => d.UserId)
                   .HasConstraintName("FK_Ranking_User");
-
-                //entity.HasData(
-                //    new Ranking
-                //    {
-
-                //    }
-                //);
 
             });
         }

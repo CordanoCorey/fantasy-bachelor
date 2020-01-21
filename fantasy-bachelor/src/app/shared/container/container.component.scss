@@ -109,7 +109,7 @@
 
     .home-icon {
       position: absolute;
-      top: 0px;
+      top: 20px;
       right: 70px;
       font-size: 64px;
       color: $primary-color;
@@ -121,5 +121,9 @@
       top: 15px;
       right: 25px;
     }
+
+    // #content {
+  //   display: block;
+  // }
   }
 }

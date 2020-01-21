@@ -158,7 +158,12 @@ export function allRankingsSelector(store: Store<any>): Observable<Ranking[]> {
 
 export function allUsersSelector(store: Store<any>): Observable<User[]> {
   return usersSelector(store).pipe(
-    map(x => Users.AssignPlaces(x.asArray.filter(y => y.id !== 1 && y.totalPoints > 0 && y.firstName !== 'Addie')
+    map(x => Users.AssignPlaces(x.asArray.filter(y =>
+      y.id !== 1
+      && y.totalPoints > 0
+      && y.firstName !== 'Addie'
+      && y.firstName !== 'Angela'
+    )
       .sort((a, b) => compareNumbers(a.totalPoints, b.totalPoints)))
     )
   );

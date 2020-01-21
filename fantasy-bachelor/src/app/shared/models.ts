@@ -47,6 +47,7 @@ export class CurrentUser extends BaseCurrentUser {
     });
   }
 }
+
 export class Login {
   email = '';
   password = '';
@@ -146,8 +147,6 @@ export class Ordering<T> {
   move(item: T, to: number): T[] {
     const from = this.getItemOrder(item);
     const itemId = this.getItemId(item);
-    console.dir(item);
-    console.log(from, itemId, to);
     if (to === from) {
       return [...this.items];
     } else if (to < from) {
@@ -227,7 +226,9 @@ export class Contestants extends Collection<Contestant> {
           `Alayah studied English in college and in her spare time, she loves to write poetry.`,
           `Alayah's favorite social media platform is Reddit.`,
           `Alayah's spirit animal is the Texas Longhorn.`
-        ]
+        ],
+        eliminated: true,
+        finish: 16
       }),
       2: build(Contestant, {
         id: 2,
@@ -241,7 +242,9 @@ export class Contestants extends Collection<Contestant> {
           `Alexa loves amusement parks but hates roller coasters.`,
           `Alexa decided to move to Chicago during a game of heads or tails.`,
           `When Alexa isn't hitting the dance floors at local clubs, she's at home prepping for her next book club meeting.`
-        ]
+        ],
+        eliminated: true,
+        finish: 16
       }),
       3: build(Contestant, {
         id: 3,
@@ -347,7 +350,9 @@ export class Contestants extends Collection<Contestant> {
           `Jasmine's biggest turn off is a guy who sits on the couch all day and plays video games.`,
           `Jasmine will know that she's met the man of her dreams when he can help her build a table.`,
           `Jasmine's best friend is her golden retriever, Gnarles Barkley.`
-        ]
+        ],
+        eliminated: true,
+        finish: 16
       }),
       10: build(Contestant, {
         id: 10,
@@ -571,7 +576,9 @@ export class Contestants extends Collection<Contestant> {
           `Sarah's favorite vacation spot is Key West, Florida.`,
           `Sarah loathes slugs.`,
           `Sarah loves listening to electronic music.`
-        ]
+        ],
+        eliminated: true,
+        finish: 16
       }),
       25: build(Contestant, {
         id: 25,
@@ -706,6 +713,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 20 && rank < 20) {
       pts += 2;
+    }
+    if (finish < 16 && rank < 16) {
+      pts += 3;
     }
     return pts;
   }
