@@ -583,6 +583,22 @@ namespace fantasy_bachelor.Entity.Context
                         PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                         SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                         UserName = "morgan.ciecierski10@gmail.com"
+                    },
+                    new ApplicationUser
+                    {
+                        Id = 36,
+                        AccessFailedCount = 0,
+                        ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                        Email = "jstasyszyn14@centurylink.net",
+                        EmailConfirmed = false,
+                        FirstName = "Zel & Lex",
+                        LastName = "Stasyszyn",
+                        LockoutEnabled = false,
+                        NormalizedEmail = "jstasyszyn14@centurylink.net",
+                        NormalizedUserName = "jstasyszyn14@centurylink.net",
+                        PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                        SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                        UserName = "jstasyszyn14@centurylink.net"
                     }
                   );
             });
