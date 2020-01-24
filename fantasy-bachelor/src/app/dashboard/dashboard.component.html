@@ -2,8 +2,9 @@
   <div id="dashboard">
     <p class="welcome frosted" *ngIf="currentUser.firstName">Welcome, {{ currentUser.firstName }}!</p>
     <!-- <mat-toolbar></mat-toolbar> -->
-    <!-- <button mat-raised-button class="btn-rank" color="primary" routerLink="/rank">RANK</button> -->
-    <bachelor-users></bachelor-users>
+    <button *ngIf="(userId$ | async) === 36 && !userHasRankings" mat-raised-button class="btn-rank" color="primary"
+      routerLink="/rank">RANK</button>
+    <bachelor-users *ngIf="userHasRankings"></bachelor-users>
     <!-- <button mat-raised-button class="btn-contestants" color="accent" routerLink="/contestants">VIEW
       CONTESTANTS</button> -->
     <!-- <div class="note frosted">

@@ -10,7 +10,8 @@ namespace fantasy_bachelor.API.Features.Rankings
             CreateMap<Ranking, RankingModel>()
                 .ForMember(d => d.ContestantFinish, o => o.MapFrom(s => s.ContestantSeason.Finish == null ? 1 : s.ContestantSeason.Finish))
                 .ForMember(d => d.ContestantName, o => o.MapFrom(s => s.ContestantSeason.Contestant.Name))
-                .ReverseMap();
+                .ReverseMap()
+                .ForMember(d => d.ContestantSeason, o => o.Ignore());
         }
     }
 }

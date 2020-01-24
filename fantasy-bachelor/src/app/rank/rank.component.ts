@@ -67,7 +67,9 @@ export class RankComponent extends SmartComponent implements OnInit {
   }
 
   saveRankings(e: Ranking[]) {
-    // this.dispatch(HttpActions.put(`users/${this.userId}/rankings`, e, RankingsActions.PUT));
+    if (this.userId === 1 || this.userId === 36) {
+      this.dispatch(HttpActions.put(`users/${this.userId}/rankings`, e, RankingsActions.PUT));
+    }
   }
 
   toContestant(e: number) {

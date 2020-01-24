@@ -157,16 +157,16 @@ export function allRankingsSelector(store: Store<any>): Observable<Ranking[]> {
 }
 
 export function allUsersSelector(store: Store<any>): Observable<User[]> {
-  return usersSelector(store).pipe(
-    map(x => Users.AssignPlaces(x.asArray.filter(y =>
-      y.id !== 1
-      && y.totalPoints > 0
-      && y.firstName !== 'Addie'
-      && y.firstName !== 'Angela'
-    )
-      .sort((a, b) => compareNumbers(a.totalPoints, b.totalPoints)))
-    )
-  );
+  return combineLatest(usersSelector(store), currentUserIdSelector(store), (users, userId) => {
+    //console.log(userId);
+    return Users.AssignPlaces(users.asArray.filter(x =>
+      x.id !== 1
+      && x.totalPoints > 0
+      && x.firstName !== 'Addie'
+      && x.firstName !== 'Angela'
+      && (x.id !== 36 || userId === 36 || userId === 1)
+    ));
+  });
 }
 
 export function usersLoadedSelector(store: Store<any>): Observable<boolean> {
@@ -187,4 +187,11 @@ export function activeUserTotalPointsSelector(store: Store<any>): Observable<num
   return activeUserContestantRankingsSelector(store).pipe(
     map(x => x.reduce((acc, y) => acc + y.points, 0))
   );
+}
+
+export function currentUserHasRankingsSelector(store: Store<any>): Observable<boolean> {
+  return combineLatest(allUsersSelector(store), currentUserIdSelector(store), currentUserRankingsSelector(store),
+    (users, userId, rankings) => users.findIndex(x => x.id === userId) !== -1 || rankings.length > 0).pipe(
+      distinctUntilChanged()
+    );
 }

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { CurrentUser } from '../shared/models';
-import { currentUserSelector } from '../shared/selectors';
+import { currentUserSelector, currentUserIdSelector, currentUserHasRankingsSelector } from '../shared/selectors';
 
 @Component({
   selector: 'bachelor-dashboard',
@@ -15,14 +15,19 @@ export class DashboardComponent extends SmartComponent implements OnInit {
 
   currentUser: CurrentUser = new CurrentUser();
   currentUser$: Observable<CurrentUser>;
+  userHasRankings = true;
+  userHasRankings$: Observable<boolean>;
+  userId$: Observable<number>;
 
   constructor(public store: Store<any>) {
     super(store);
     this.currentUser$ = currentUserSelector(store);
+    this.userHasRankings$ = currentUserHasRankingsSelector(store);
+    this.userId$ = currentUserIdSelector(store);
   }
 
   ngOnInit() {
-    this.sync(['currentUser']);
+    this.sync(['currentUser', 'userHasRankings']);
   }
 
 }
