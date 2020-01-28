@@ -226,9 +226,7 @@ export class Contestants extends Collection<Contestant> {
           `Alayah studied English in college and in her spare time, she loves to write poetry.`,
           `Alayah's favorite social media platform is Reddit.`,
           `Alayah's spirit animal is the Texas Longhorn.`
-        ],
-        eliminated: true,
-        finish: 16
+        ]
       }),
       2: build(Contestant, {
         id: 2,
@@ -244,7 +242,7 @@ export class Contestants extends Collection<Contestant> {
           `When Alexa isn't hitting the dance floors at local clubs, she's at home prepping for her next book club meeting.`
         ],
         eliminated: true,
-        finish: 16
+        finish: 17
       }),
       3: build(Contestant, {
         id: 3,
@@ -352,7 +350,7 @@ export class Contestants extends Collection<Contestant> {
           `Jasmine's best friend is her golden retriever, Gnarles Barkley.`
         ],
         eliminated: true,
-        finish: 16
+        finish: 17
       }),
       10: build(Contestant, {
         id: 10,
@@ -578,7 +576,7 @@ export class Contestants extends Collection<Contestant> {
           `Sarah loves listening to electronic music.`
         ],
         eliminated: true,
-        finish: 16
+        finish: 17
       }),
       25: build(Contestant, {
         id: 25,
@@ -714,8 +712,8 @@ export class Rankings extends Collection<Ranking> {
     if (finish < 20 && rank < 20) {
       pts += 2;
     }
-    if (finish < 16 && rank < 16) {
-      pts += 3;
+    if (finish < 17 && rank < 17) {
+      pts += 7;
     }
     return pts;
   }

@@ -44,9 +44,9 @@ namespace fantasy_bachelor.API.Features.Rankings
                 {
                     pts += 2;
                 }
-                if (ranking.ContestantFinish < 16 && (ranking.Rank + 1) < 16)
+                if (ranking.ContestantFinish < 17 && (ranking.Rank + 1) < 17)
                 {
-                    pts += 3;
+                    pts += 7;
                 }
                 return acc + pts;
             });
