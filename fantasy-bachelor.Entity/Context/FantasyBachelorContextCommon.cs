@@ -323,7 +323,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 1,
                       ContestantId = 1,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {
@@ -350,7 +351,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 5,
                       ContestantId = 5,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {
@@ -409,7 +411,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 14,
                       ContestantId = 14,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {
@@ -429,7 +432,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 17,
                       ContestantId = 17,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {
@@ -481,13 +485,15 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 25,
                       ContestantId = 25,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {
                       Id = 26,
                       ContestantId = 26,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 11
                   },
                   new ContestantSeasonXref
                   {

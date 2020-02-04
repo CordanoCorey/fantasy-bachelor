@@ -226,7 +226,9 @@ export class Contestants extends Collection<Contestant> {
           `Alayah studied English in college and in her spare time, she loves to write poetry.`,
           `Alayah's favorite social media platform is Reddit.`,
           `Alayah's spirit animal is the Texas Longhorn.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       2: build(Contestant, {
         id: 2,
@@ -288,7 +290,9 @@ export class Contestants extends Collection<Contestant> {
           `Deandra considers herself to be a farmer's market aficionado.`,
           `Deandra hates EDM.`,
           `Deandra still cries when she gets her blood drawn.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       6: build(Contestant, {
         id: 6,
@@ -424,7 +428,9 @@ export class Contestants extends Collection<Contestant> {
           `Kiarra's biggest fear is being trapped on the top of a roller coaster.`,
           `Kiarra is extremely turned off by men who grind their teeth.`,
           `Kiarra says she will pick napping over almost any other activity.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       15: build(Contestant, {
         id: 15,
@@ -470,7 +476,9 @@ export class Contestants extends Collection<Contestant> {
           `Lexi would rather be buried alive than be trapped in a room filled with frogs.`,
           `Lexi loves her home in Florida, but has too much sass for the suburb life.`,
           `Nothing turns Lexi off more than people who are desperate.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       18: build(Contestant, {
         id: 18,
@@ -590,7 +598,9 @@ export class Contestants extends Collection<Contestant> {
           `When Savannah wants to treat herself, she indulges in a Vampire Facial.`,
           `Savannah's favorite thing to do to pass time is sit on her back porch and feed the local turtles, which is why she often refers to herself as "The Turtle Princess."`,
           `Savannah used to have a cancer ribbon tattoo on her ribs, but removed it for the Houston Texans cheer tryouts.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       26: build(Contestant, {
         id: 26,
@@ -604,7 +614,9 @@ export class Contestants extends Collection<Contestant> {
           `According to Shiann, the best part of her body is her lower back.`,
           `Skydiving is at the top of Shiann's bucket list.`,
           `Shiann was a competitive horseback rider growing up.`
-        ]
+        ],
+        eliminated: true,
+        finish: 11
       }),
       27: build(Contestant, {
         id: 27,
@@ -713,7 +725,10 @@ export class Rankings extends Collection<Ranking> {
       pts += 2;
     }
     if (finish < 17 && rank < 17) {
-      pts += 7;
+      pts += 7; // 3 + 4
+    }
+    if (finish < 11 && rank < 11) {
+      pts += 5;
     }
     return pts;
   }
