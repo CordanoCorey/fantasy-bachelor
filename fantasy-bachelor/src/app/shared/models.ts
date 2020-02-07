@@ -538,7 +538,9 @@ export class Contestants extends Collection<Contestant> {
           `Mykenna is obsessed with ABC's Grey's Anatomy.`,
           `Mykenna's dream job is to start her own charity.`,
           `Mykenna loves to go to car shows with her dad.`
-        ]
+        ],
+        eliminated: true,
+        finish: 7
       }),
       22: build(Contestant, {
         id: 22,
@@ -630,7 +632,9 @@ export class Contestants extends Collection<Contestant> {
           `Sydney's favorite holiday is Valentine's Day.`,
           `ydney's ability to speak Spanish is so-so, but on salsa night, she rules the dance floor.`,
           `Sydney tries to jog at least once a day and then likes to reward herself with a cupcake she bakes herself. Sweet!`
-        ]
+        ],
+        eliminated: true,
+        finish: 7
       }),
       28: build(Contestant, {
         id: 28,
@@ -644,7 +648,9 @@ export class Contestants extends Collection<Contestant> {
           `Tammy loves to travel so much that she has the vanity license plate "JETSETTR."`,
           `Tammy ended her last relationship by ghosting him.`,
           `Tammy considers herself a tomboy and doesn't relate well to the "blonde Barbie" types.`
-        ]
+        ],
+        eliminated: true,
+        finish: 7
       }),
       29: build(Contestant, {
         id: 29,
@@ -678,8 +684,10 @@ export class Contestants extends Collection<Contestant> {
           `If Victoria could travel anywhere in the world, she would go to Italy.`,
           ` Victoria's biggest fears are murky waters she can't see her feet in, and chicken served on the bone.`,
           `Nothing upsets Victoria more than finding raisins in her cookies.`
-        ]
-      }),
+        ],
+        eliminated: true,
+        finish: 7
+      })
     };
   }
 }
@@ -729,6 +737,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 11 && rank < 11) {
       pts += 5;
+    }
+    if (finish < 7 && rank < 7) {
+      pts += 6;
     }
     return pts;
   }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fantasy_bachelor.Entity.Context;
 
 namespace fantasy_bachelor.Entity.Migrations
 {
     [DbContext(typeof(FantasyBachelorContext))]
-    partial class FantasyBachelorContextModelSnapshot : ModelSnapshot
+    [Migration("20200207124039_Episode6")]
+    partial class Episode6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
