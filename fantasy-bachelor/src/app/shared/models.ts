@@ -400,7 +400,9 @@ export class Contestants extends Collection<Contestant> {
           `Kelley is allergic to gluten, dairy and black tea.`,
           `Nothing makes Kelley angrier than when people don't listen to her.`,
           `Kelley loves to travel and has been to 26 countries.`
-        ]
+        ],
+        eliminated: true,
+        finish: 5
       }),
       13: build(Contestant, {
         id: 13,
@@ -554,7 +556,9 @@ export class Contestants extends Collection<Contestant> {
           `If Natasha could pioneer her own fitness movement, it would be disco yoga.`,
           `Natasha loves her legs and her back where she has a cross and dagger tattoo.`,
           `Natasha is afraid of rats, mice, spiders and anything that crawls.`
-        ]
+        ],
+        eliminated: true,
+        finish: 5
       }),
       23: build(Contestant, {
         id: 23,
@@ -740,6 +744,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 7 && rank < 7) {
       pts += 6;
+    }
+    if (finish < 5 && rank < 5) {
+      pts += 10;
     }
     return pts;
   }

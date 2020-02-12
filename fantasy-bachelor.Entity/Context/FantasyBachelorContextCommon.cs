@@ -399,7 +399,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 12,
                       ContestantId = 12,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 7
                   },
                   new ContestantSeasonXref
                   {
@@ -466,7 +467,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 22,
                       ContestantId = 22,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 7
                   },
                   new ContestantSeasonXref
                   {
