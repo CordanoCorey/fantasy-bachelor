@@ -416,7 +416,9 @@ export class Contestants extends Collection<Contestant> {
           `Kelsey says she is like an onion; she has many layers.`,
           `If you want to give Kelsey a gift, don't get her flowers. Get her chocolate!`,
           `Kelsey described her personality as feisty and stubborn.`
-        ]
+        ],
+        eliminated: true,
+        finish: 4
       }),
       14: build(Contestant, {
         id: 14,
@@ -747,6 +749,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 5 && rank < 5) {
       pts += 10;
+    }
+    if (finish < 4 && rank < 4) {
+      pts += 15;
     }
     return pts;
   }
