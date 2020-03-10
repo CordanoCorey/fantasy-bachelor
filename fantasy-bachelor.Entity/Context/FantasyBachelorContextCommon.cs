@@ -517,7 +517,8 @@ namespace fantasy_bachelor.Entity.Context
                   {
                       Id = 29,
                       ContestantId = 29,
-                      SeasonId = 1
+                      SeasonId = 1,
+                      Finish = 3
                   },
                   new ContestantSeasonXref
                   {

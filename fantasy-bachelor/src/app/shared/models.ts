@@ -676,7 +676,9 @@ export class Contestants extends Collection<Contestant> {
           `Victoria loves a man who is in touch with his feelings and isn't afraid to cry in public.`,
           `Victoria is a big fan of country music and will travel to see her favorite artists play a show.`,
           `The most important woman in Victoria's life is her dear grandmother.`
-        ]
+        ],
+        eliminated: true,
+        finish: 3
       }),
       30: build(Contestant, {
         id: 30,
@@ -702,6 +704,7 @@ export class Ranking {
   id = 0;
   contestantAge = 0;
   contestantEliminated = false;
+  contestantFinish = 0;
   contestantHometown = '';
   contestantName = '';
   contestantProfession = '';
@@ -715,7 +718,7 @@ export class Ranking {
 
   get metadata(): Metadata {
     return build(Metadata, {
-      ignore: ['id', 'contestantAge', 'contestantHometown', 'contestantName', 'contestantProfession', 'contestantSrc', 'order', 'points']
+      ignore: ['id', 'contestantAge', 'contestantHometown', 'contestantFinish', 'contestantName', 'contestantProfession', 'contestantSrc', 'order', 'points']
     });
   }
 
@@ -752,6 +755,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 4 && rank < 4) {
       pts += 15;
+    }
+    if (finish < 3 && rank < 3) {
+      pts += 25;
     }
     return pts;
   }

@@ -7,7 +7,16 @@
     </div>
     <div class="contestant" *ngFor="let ranking of rankings$ | async; index as i;"
       (click)="toContestant(ranking.contestantSeasonId)">
-      <span class="rank">{{ i + 1 }}</span>
+      <div class="left">
+        <div class="rank">
+          <span class="label">Rank</span>
+          <span class="value">{{ i + 1 }}</span>
+        </div>
+        <div *ngIf="ranking.contestantEliminated" class="finish">
+          <span class="label">Finish</span>
+          <span class="value">{{ ranking.contestantFinish }}</span>
+        </div>
+      </div>
       <div class="middle">
         <img [src]="ranking.contestantSrc">
         <p class="info">

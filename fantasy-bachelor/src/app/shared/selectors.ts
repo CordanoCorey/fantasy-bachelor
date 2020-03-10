@@ -119,6 +119,7 @@ export function activeUserContestantRankingsSelector(store: Store<any>): Observa
       return build(Ranking, r, {
         contestantAge: x.age,
         contestantHometown: x.hometown,
+        contestantFinish: x.finish,
         contestantName: x.name,
         contestantProfession: x.profession,
         contestantSeasonId: x.id,
@@ -141,6 +142,7 @@ export function currentUserContestantRankingsSelector(store: Store<any>): Observ
     return contestants.map(x => build(Ranking, rankings.find(y => y.contestantSeasonId === x.id), {
       contestantAge: x.age,
       contestantHometown: x.hometown,
+      contestantFinish: x.finish,
       contestantName: x.name,
       contestantProfession: x.profession,
       contestantSeasonId: x.id,
