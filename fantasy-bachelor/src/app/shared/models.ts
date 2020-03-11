@@ -322,7 +322,9 @@ export class Contestants extends Collection<Contestant> {
           `Hannah Ann could watch home improvement shows all day and never get bored.`,
           `When Hannah Ann is nervous, she becomes very talkative.`,
           `Hannah Ann's home is decorated with artwork that she painted.`
-        ]
+        ],
+        eliminated: true,
+        finish: 2
       }),
       8: build(Contestant, {
         id: 8,
@@ -496,7 +498,8 @@ export class Contestants extends Collection<Contestant> {
           `If Madison was stranded on an island and could only bring one book, it would be The Bible.`,
           `Madison loves working with foster kids and wants to open an orphanage one day.`,
           `Madison would rather rock a cool pair of Jordans than any heel.`
-        ]
+        ],
+        finish: 1
       }),
       19: build(Contestant, {
         id: 19,
@@ -758,6 +761,9 @@ export class Rankings extends Collection<Ranking> {
     }
     if (finish < 3 && rank < 3) {
       pts += 25;
+    }
+    if (finish < 2 && rank < 2) {
+      pts += 50;
     }
     return pts;
   }
